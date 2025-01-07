@@ -1,10 +1,26 @@
 import type { Metadata } from 'next'
 
+import Footer from './components/Footer'
+import Navbar from './components/Navbar'
 import './globals.css'
 
 export const metadata: Metadata = {
   title: 'The Movie BD NextJS',
   description: '.........',
+  openGraph: {
+    title: 'The Movie BD NextJS',
+    description: '.........',
+    images: [''],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 }
 
 export default function RootLayout({
@@ -14,7 +30,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`antialiased`}>{children}</body>
+      <body className={`antialiased`}>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }
