@@ -1,4 +1,5 @@
 import { Movie } from '@/types/Movies'
+import { dateFormatting, runtime } from '@/utils/functions'
 import { Metadata } from 'next'
 import Image from 'next/image'
 
@@ -39,45 +40,37 @@ const MoviePage = async ({ params }: Props) => {
   )
   const data: Movie = await response.json()
 
-  const runtime = () => {
-    const auxH = Math.floor(data.runtime / 60)
-    const auxM = data.runtime % 60
-    let h = auxH < 10 ? '0' + auxH + 'h' : auxH + 'h'
-    let m = auxM < 10 ? '0' + auxM + 'min' : auxM + 'min'
-    if (h === '00h') h = ''
-    if (m === '00min') m = ''
-    return `${h} ${m}`
-  }
-
   return (
-    <div className="relative w-full overflow-hidden md:min-h-[600px]">
+    <div>
       <section
-        className="absolute inset-0 z-[-1] flex flex-col p-6 md:flex-row"
+        className="flex min-h-[600px] flex-col p-6 md:flex-row"
         style={{
           background: `linear-gradient(to right, rgb(16, 14, 14) 150px, rgba(16, 14, 14, 0.84) 100%), url(https://image.tmdb.org/t/p/original${data.backdrop_path}) no-repeat center/cover`,
         }}
       >
-        <div className="relative h-[300px] flex-1 md:h-full">
+        <div className="relative h-[500px] md:h-[600px] md:flex-1">
           <Image
             src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
             alt="poster"
             priority
             quality={100}
             fill
+            className="rounded-lg"
           />
         </div>
-        <div className="flex-[2] pl-6 text-white">
+        <div className="pt-6 text-white md:flex-[2] md:pl-6 md:pt-0">
           <h2>{data.title}</h2>
-          <p>{data.release_date}</p>
+          <p>{dateFormatting(data.release_date)}</p>
           <ul>
             {data.genres.map((genre) => (
               <li key={genre.id}>{genre.name}</li>
             ))}
           </ul>
-          <p>{runtime()}</p>
+          <p>{runtime(data.runtime)}</p>
           <p>{data.overview}</p>
         </div>
       </section>
+      
     </div>
   )
 }
