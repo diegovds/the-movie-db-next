@@ -30,9 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`antialiased`}>
+      <body className="flex min-h-dvh flex-col antialiased">
         <Navbar />
-        {children}
+        <main className="flex flex-1">{children}</main>
         <Footer />
       </body>
     </html>
