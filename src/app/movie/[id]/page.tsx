@@ -1,5 +1,5 @@
 import { Movie } from '@/types/Movies'
-import { dateFormatting, runtime } from '@/utils/functions'
+import { dateFormatting, genresList, runtime } from '@/utils/functions'
 import { Metadata } from 'next'
 import Image from 'next/image'
 
@@ -58,16 +58,17 @@ const MoviePage = async ({ params }: Props) => {
             className="rounded-lg"
           />
         </div>
-        <div className="pt-6 text-white md:flex-[2] md:pl-6 md:pt-0">
-          <h2>{data.title}</h2>
-          <p>{dateFormatting(data.release_date)}</p>
-          <ul>
-            {data.genres.map((genre) => (
-              <li key={genre.id}>{genre.name}</li>
-            ))}
-          </ul>
-          <p>{runtime(data.runtime)}</p>
-          <p>{data.overview}</p>
+        <div className="flex flex-col items-center gap-2 pt-6 text-white md:flex-[2] md:items-start md:pl-6 md:pt-0">
+          <h2 className="text-5xl font-bold">{data.title}</h2>
+          <div className="flex flex-col items-center gap-2 text-lg md:flex-row">
+            <p>{dateFormatting(data.release_date)}</p>
+            <div className="mx-0 my-auto hidden h-[6px] w-[6px] rounded-[999px] bg-white md:block" />
+            <p>{genresList(data.genres)}</p>
+            <div className="mx-0 my-auto hidden h-[6px] w-[6px] rounded-[999px] bg-white md:block" />
+            <p>{runtime(data.runtime)}</p>
+          </div>
+          <h3 className="text-5xl font-bold">Sinopse</h3>
+          <p className="text-center text-base md:text-left">{data.overview}</p>
         </div>
       </section>
     </div>

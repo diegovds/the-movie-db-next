@@ -1,3 +1,4 @@
+import { Genre } from '@/types/Movies'
 import dayjs from 'dayjs'
 import ptBr from 'dayjs/locale/pt-br'
 import timezone from 'dayjs/plugin/timezone'
@@ -19,4 +20,16 @@ export const runtime = (runtime: number) => {
 
 export const dateFormatting = (date: Date): string => {
   return dayjs.utc(date).tz('America/Sao_Paulo').format('D[ de ]MMMM[ de ]YYYY')
+}
+
+export const genresList = (genres: Genre[]) => {
+  if (genres === null || genres === undefined) return false
+  let list = ''
+
+  for (let i = 0; i < genres.length; i++) {
+    const element = genres[i]
+
+    list += `${element.name}${i !== genres.length - 1 ? ',' : ''} `
+  }
+  return list
 }
