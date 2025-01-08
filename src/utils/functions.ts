@@ -1,0 +1,22 @@
+import dayjs from 'dayjs'
+import ptBr from 'dayjs/locale/pt-br'
+import timezone from 'dayjs/plugin/timezone'
+import utc from 'dayjs/plugin/utc'
+
+dayjs.locale(ptBr)
+dayjs.extend(utc)
+dayjs.extend(timezone)
+
+export const runtime = (runtime: number) => {
+  const auxH = Math.floor(runtime / 60)
+  const auxM = runtime % 60
+  let h = auxH < 10 ? '0' + auxH + 'h' : auxH + 'h'
+  let m = auxM < 10 ? '0' + auxM + 'min' : auxM + 'min'
+  if (h === '00h') h = ''
+  if (m === '00min') m = ''
+  return `${h} ${m}`
+}
+
+export const dateFormatting = (date: Date): string => {
+  return dayjs.utc(date).tz('America/Sao_Paulo').format('D[ de ]MMMM[ de ]YYYY')
+}
