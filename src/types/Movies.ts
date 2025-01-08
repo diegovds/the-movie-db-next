@@ -10,6 +10,6 @@ export interface Movie {
   poster_path: string
   backdrop_path: string
   genres: Genre[]
-  release_date: string
+  release_date: Date
   runtime: number
 }
