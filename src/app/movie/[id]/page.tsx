@@ -70,7 +70,6 @@ const MoviePage = async ({ params }: Props) => {
           <p>{data.overview}</p>
         </div>
       </section>
-      
     </div>
   )
 }
