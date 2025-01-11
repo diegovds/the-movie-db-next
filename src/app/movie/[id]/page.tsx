@@ -41,7 +41,7 @@ const MoviePage = async ({ params }: Props) => {
   const data: Movie = await response.json()
 
   return (
-    <div>
+    <div className="w-full">
       <section
         className="flex min-h-[600px] flex-col p-6 md:flex-row"
         style={{
@@ -59,7 +59,9 @@ const MoviePage = async ({ params }: Props) => {
           />
         </div>
         <div className="flex flex-col items-center gap-2 pt-6 text-white md:flex-[2] md:items-start md:pl-6 md:pt-0">
-          <h2 className="text-5xl font-bold">{data.title}</h2>
+          <h2 className="text-balance text-center text-4xl font-bold md:text-5xl">
+            {data.title}
+          </h2>
           <div className="flex flex-col items-center gap-2 text-lg md:flex-row">
             <p>{dateFormatting(data.release_date)}</p>
             <div className="mx-0 my-auto hidden h-[6px] w-[6px] rounded-[999px] bg-white md:block" />
@@ -67,8 +69,15 @@ const MoviePage = async ({ params }: Props) => {
             <div className="mx-0 my-auto hidden h-[6px] w-[6px] rounded-[999px] bg-white md:block" />
             <p>{runtime(data.runtime)}</p>
           </div>
-          <h3 className="text-5xl font-bold">Sinopse</h3>
+          <h3 className="text-4xl font-bold md:text-5xl">Sinopse</h3>
           <p className="text-center text-base md:text-left">{data.overview}</p>
+          <h3 className="text-4xl font-bold md:text-5xl">Trailer</h3>
+          <iframe
+            width="100%"
+            className="aspect-video"
+            src={`https://www.youtube.com/embed/${data.videos.results[0].key}`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          />
         </div>
       </section>
     </div>
