@@ -3,6 +3,14 @@ export interface Genre {
   name: string
 }
 
+interface MovieKey {
+  key: string
+}
+
+interface Results {
+  results: MovieKey[]
+}
+
 export interface Movie {
   id: number
   title: string
@@ -12,4 +20,5 @@ export interface Movie {
   genres: Genre[]
   release_date: Date
   runtime: number
+  videos: Results
 }
