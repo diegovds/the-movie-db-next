@@ -14,7 +14,7 @@ const Navbar = () => {
   }, [pathname])
 
   return (
-    <nav className="mb-6 flex flex-col justify-between bg-slate-400 md:flex-row">
+    <nav className="flex flex-col justify-between bg-slate-400 md:flex-row">
       <div className="flex justify-between px-6 py-3">
         <Link className="flex items-center" href={`/`}>
           Icon
