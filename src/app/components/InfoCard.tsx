@@ -1,6 +1,8 @@
 import { Movie } from '@/types/Movies'
+import { dateFormatting } from '@/utils/functions'
 import Image from 'next/image'
 import Link from 'next/link'
+import RatingCircle from './RatingCircle'
 
 type InfoCardProps = {
   movie: Movie
@@ -21,8 +23,12 @@ const InfoCard = ({ movie }: InfoCardProps) => {
           quality={100}
           fill
         />
+        <RatingCircle voteAverage={movie.vote_average} />
       </div>
-      <h2 className="truncate text-center font-medium">{movie.title}</h2>
+      <h2 className="truncate text-center text-sm">{movie.title}</h2>
+      <data className="text-center text-xs text-gray-400">
+        {dateFormatting(movie.release_date)}
+      </data>
     </Link>
   )
 }

@@ -1,3 +1,4 @@
+import RatingCircle from '@/app/components/RatingCircle'
 import { Movie } from '@/types/Movies'
 import { dateFormatting, genresList, runtime } from '@/utils/functions'
 import { Metadata } from 'next'
@@ -57,6 +58,7 @@ const MoviePage = async ({ params }: Props) => {
             fill
             className="rounded-lg"
           />
+          <RatingCircle voteAverage={data.vote_average} />
         </div>
         <div className="flex flex-col items-center gap-2 pt-6 text-white md:flex-[2] md:items-start md:pl-6 md:pt-0">
           <h2 className="text-balance text-center text-4xl font-bold md:text-5xl">
