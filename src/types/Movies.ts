@@ -21,4 +21,5 @@ export interface Movie {
   release_date: Date
   runtime: number
   videos: Results
+  vote_average: number
 }
