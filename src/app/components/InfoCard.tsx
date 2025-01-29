@@ -11,7 +11,7 @@ type InfoCardProps = {
 const InfoCard = ({ movie }: InfoCardProps) => {
   return (
     <Link
-      className="flex max-w-[150px] flex-col gap-2 overflow-hidden rounded-lg bg-gray-50 p-3 shadow-md md:max-w-[200px]"
+      className="flex flex-col gap-2 overflow-hidden rounded-lg bg-gray-50 p-3 shadow-md"
       key={movie.id}
       href={`/movie/${movie.id}`}
     >

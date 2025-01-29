@@ -1,4 +1,5 @@
 import { Movie } from '@/types/Movies'
+import GridColumns from './components/GridColumns'
 import InfoCard from './components/InfoCard'
 
 interface ResponseProps {
@@ -18,11 +19,11 @@ const Home = async () => {
   const data: ResponseProps = await response.json()
 
   return (
-    <div className="mx-auto my-0 grid w-max grid-cols-2 gap-10 md:grid-cols-3 lg:grid-cols-4">
+    <GridColumns>
       {data.results.map((movie) => (
         <InfoCard key={movie.id} movie={movie} />
       ))}
-    </div>
+    </GridColumns>
   )
 }
 
