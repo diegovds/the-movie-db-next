@@ -1,9 +1,9 @@
 type RatingCircleProps = {
-  voteAverage: number
+  voteAverage?: number
 }
 
 const RatingCircle = ({ voteAverage }: RatingCircleProps) => {
-  const vote = parseFloat(voteAverage.toFixed(0)) * 10
+  const vote = voteAverage ? parseFloat(voteAverage.toFixed(0)) * 10 : 0
   const color =
     vote <= 35
       ? 'ring-red-600'
