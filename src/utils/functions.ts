@@ -18,7 +18,7 @@ export const runtime = (runtime: number) => {
   return `${h} ${m}`
 }
 
-export const dateFormatting = (date: Date): string => {
+export const dateFormatting = (date: Date | undefined): string => {
   return dayjs.utc(date).tz('America/Sao_Paulo').format('D[ de ]MMMM[ de ]YYYY')
 }
 
