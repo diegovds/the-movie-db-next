@@ -1,7 +1,7 @@
 import { Movie } from '@/types/Movies'
-import Link from 'next/link'
 import GridColumns from './components/GridColumns'
 import InfoCard from './components/InfoCard'
+import Pagination from './components/Pagination'
 
 interface ResponseProps {
   results: Movie[]
@@ -34,14 +34,7 @@ const Home = async ({ searchParams }: Props) => {
           <InfoCard key={movie.id} movie={movie} />
         ))}
       </GridColumns>
-
-      <div className="mt-6 flex justify-center gap-2">
-        {Array.from({ length: 10 }).map((_, index) => (
-          <Link key={index} href={`/?page=${index + 1}`}>
-            {index + 1}
-          </Link>
-        ))}
-      </div>
+      <Pagination totalPages={data.total_pages} />
     </div>
   )
 }
