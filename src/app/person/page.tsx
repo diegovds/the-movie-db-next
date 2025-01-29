@@ -1,6 +1,7 @@
 import { Person } from '@/types/Persons'
 import GridColumns from '../components/GridColumns'
 import InfoCard from '../components/InfoCard'
+import Pagination from '../components/Pagination'
 
 interface ResponseProps {
   results: Person[]
@@ -26,8 +27,6 @@ const PersonPage = async ({ searchParams }: Props) => {
   )
   const data: ResponseProps = await response.json()
 
-  console.log(data.results)
-
   return (
     <div className="w-full">
       <GridColumns>
@@ -35,6 +34,7 @@ const PersonPage = async ({ searchParams }: Props) => {
           <InfoCard key={person.id} person={person} />
         ))}
       </GridColumns>
+      <Pagination totalPages={data.total_pages} person={data.results} />
     </div>
   )
 }

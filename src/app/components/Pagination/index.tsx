@@ -1,5 +1,6 @@
 'use client'
 
+import { Person } from '@/types/Persons'
 import { Serie } from '@/types/Series'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -10,9 +11,10 @@ import PaginationButton from './PaginationButton'
 type PaginationProps = {
   totalPages: number
   serie?: Serie[]
+  person?: Person[]
 }
 
-const Pagination = ({ totalPages, serie }: PaginationProps) => {
+const Pagination = ({ totalPages, serie, person }: PaginationProps) => {
   const [pageCount, setPageCount] = useState(1)
   const [pageChanged, setPageChanged] = useState(false)
   const router = useRouter()
@@ -22,10 +24,14 @@ const Pagination = ({ totalPages, serie }: PaginationProps) => {
       router.push(`tv/?page=${pageCount}`)
       setPageChanged(true)
     }
-    if (!serie) {
+    if (person && !pageChanged) {
+      router.push(`person/?page=${pageCount}`)
+      setPageChanged(true)
+    }
+    if (!serie && !person) {
       router.push(`/?page=${pageCount}`)
     }
-  }, [router, serie, pageChanged, pageCount])
+  }, [router, serie, person, pageChanged, pageCount])
 
   const handleAddingPages = () => {
     if (pageCount < totalPages - 5) {
@@ -51,9 +57,11 @@ const Pagination = ({ totalPages, serie }: PaginationProps) => {
           key={index}
           className="min-w-8 rounded-md border border-solid border-gray-300 bg-blue-500 p-2 text-center text-white transition hover:bg-blue-300"
           href={
-            !serie
-              ? `/?page=${index + pageCount}`
-              : `/tv?page=${index + pageCount}`
+            serie
+              ? `/tv?page=${index + pageCount}`
+              : person
+                ? `/person?page=${index + pageCount}`
+                : `/?page=${index + pageCount}`
           }
         >
           {index + pageCount}
