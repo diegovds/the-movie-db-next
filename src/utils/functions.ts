@@ -1,4 +1,5 @@
 import { Genre } from '@/types/Movies'
+import { Production } from '@/types/Persons'
 import dayjs from 'dayjs'
 import ptBr from 'dayjs/locale/pt-br'
 import timezone from 'dayjs/plugin/timezone'
@@ -30,6 +31,24 @@ export const genresList = (genres: Genre[]) => {
     const element = genres[i]
 
     list += `${element.name}${i !== genres.length - 1 ? ',' : ''} `
+  }
+  return list
+}
+
+export const productionsList = (productions: Production[]) => {
+  if (productions === null || productions === undefined) return false
+  let list = ''
+
+  for (let i = 0; i < productions.length; i++) {
+    const element = productions[i]
+
+    if (element.name) {
+      list += `${element.name}${i !== productions.length - 1 ? ',' : ''} `
+    }
+
+    if (element.title) {
+      list += `${element.title}${i !== productions.length - 1 ? ',' : ''} `
+    }
   }
   return list
 }
