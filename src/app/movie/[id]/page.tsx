@@ -61,7 +61,7 @@ const MoviePage = async ({ params }: Props) => {
           <RatingCircle voteAverage={data.vote_average} />
         </div>
         <div className="flex flex-col items-center gap-2 pt-6 text-white md:flex-[2] md:items-start md:pl-6 md:pt-0">
-          <h2 className="text-balance text-center text-4xl font-bold md:text-5xl">
+          <h2 className="text-balance text-center text-4xl font-bold md:text-nowrap md:text-left md:text-5xl">
             {data.title}
           </h2>
           <div className="flex flex-col items-center gap-2 text-lg md:flex-row">
