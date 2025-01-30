@@ -1,3 +1,4 @@
+import ModalDiv from '@/app/components/Modal/ModalDiv'
 import RatingCircle from '@/app/components/RatingCircle'
 import { Movie } from '@/types/Movies'
 import { dateFormatting, genresList, runtime } from '@/utils/functions'
@@ -73,17 +74,7 @@ const MoviePage = async ({ params }: Props) => {
           </div>
           <h3 className="text-4xl font-bold md:text-5xl">Sinopse</h3>
           <p className="text-center text-base md:text-left">{data.overview}</p>
-          {data.videos.results.length > 0 && (
-            <>
-              <h3 className="text-4xl font-bold md:text-5xl">Trailer</h3>
-              <iframe
-                width="100%"
-                className="aspect-video"
-                src={`https://www.youtube.com/embed/${data.videos.results[0].key}`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              />
-            </>
-          )}
+          {data.videos.results.length > 0 && <ModalDiv movie={data} />}
         </div>
       </section>
     </div>
