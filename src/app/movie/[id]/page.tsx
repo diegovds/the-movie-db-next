@@ -2,7 +2,9 @@ import Anchor from '@/app/components/Anchor'
 import GridColumns from '@/app/components/GridColumns'
 import InfoCard from '@/app/components/InfoCard'
 import InfoPage from '@/app/components/InfoPage'
+import TagH2 from '@/app/components/TagH2'
 import { Movie } from '@/types/Movies'
+import { FormatterDollar } from '@/utils/functions'
 import { Metadata } from 'next'
 import { FaFacebook, FaImdb, FaInstagram } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
@@ -58,35 +60,47 @@ const MoviePage = async ({ params }: Props) => {
             ))}
           </GridColumns>
         </div>
-        <div className="mt-6 flex justify-center gap-6 md:ml-6 md:mt-0 md:flex-1 md:justify-start">
-          <Anchor
-            href={`https://www.facebook.com/${data.external_ids.facebook_id}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaFacebook />
-          </Anchor>
-          <Anchor
-            href={`https://www.instagram.com/${data.external_ids.instagram_id}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaInstagram />
-          </Anchor>
-          <Anchor
-            href={`https://x.com/${data.external_ids.twitter_id}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaXTwitter />
-          </Anchor>
-          <Anchor
-            href={`https://www.imdb.com/pt/title/${data.external_ids.imdb_id}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaImdb />
-          </Anchor>
+        <div className="mt-6 md:ml-6 md:mt-0 md:flex-1">
+          <div className="flex justify-center gap-6 md:justify-start">
+            <Anchor
+              href={`https://www.facebook.com/${data.external_ids.facebook_id}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaFacebook />
+            </Anchor>
+            <Anchor
+              href={`https://www.instagram.com/${data.external_ids.instagram_id}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaInstagram />
+            </Anchor>
+            <Anchor
+              href={`https://x.com/${data.external_ids.twitter_id}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaXTwitter />
+            </Anchor>
+            <Anchor
+              href={`https://www.imdb.com/pt/title/${data.external_ids.imdb_id}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaImdb />
+            </Anchor>
+          </div>
+          <div className="flex flex-col items-center md:items-start">
+            <TagH2 className="mt-6 md:mt-3">Título original</TagH2>
+            <p>{data.original_title}</p>
+            <TagH2>Situação</TagH2>
+            <p>{data.status === 'Released' ? 'Lançado' : 'Em produção'}</p>
+            <TagH2>Orçamento</TagH2>
+            <p>{FormatterDollar(data.budget)}</p>
+            <TagH2>Receita</TagH2>
+            <p>{FormatterDollar(data.revenue)}</p>
+          </div>
         </div>
       </div>
     </div>

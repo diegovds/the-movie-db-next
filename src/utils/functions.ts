@@ -52,3 +52,11 @@ export const productionsList = (productions: Production[]) => {
   }
   return list
 }
+
+export function FormatterDollar(money: number) {
+  if (money === undefined || money == null) return false
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(money)
+}

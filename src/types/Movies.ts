@@ -37,4 +37,8 @@ export interface Movie {
   vote_average: number
   credits: Cast
   external_ids: Social
+  original_title: string
+  budget: number
+  revenue: number
+  status: string
 }

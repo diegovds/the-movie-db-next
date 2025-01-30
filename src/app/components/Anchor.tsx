@@ -5,7 +5,10 @@ type AnchorProps = AnchorHTMLAttributes<HTMLAnchorElement>
 
 const Anchor = ({ children, className, ...props }: AnchorProps) => {
   return (
-    <a className={cn('text-3xl md:text-4xl', className)} {...props}>
+    <a
+      className={cn('h-fit text-3xl hover:opacity-80 md:text-4xl', className)}
+      {...props}
+    >
       {children}
     </a>
   )
