@@ -17,6 +17,13 @@ interface Cast {
   cast: Person[]
 }
 
+interface Social {
+  imdb_id: string
+  facebook_id: string
+  instagram_id: string
+  twitter_id: string
+}
+
 export interface Movie {
   id: number
   title: string
@@ -29,4 +36,5 @@ export interface Movie {
   videos: Results
   vote_average: number
   credits: Cast
+  external_ids: Social
 }

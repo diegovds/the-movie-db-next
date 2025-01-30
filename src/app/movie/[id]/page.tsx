@@ -1,8 +1,10 @@
+import Anchor from '@/app/components/Anchor'
 import GridColumns from '@/app/components/GridColumns'
 import InfoCard from '@/app/components/InfoCard'
 import InfoPage from '@/app/components/InfoPage'
 import { Movie } from '@/types/Movies'
 import { Metadata } from 'next'
+import { FaFacebook, FaImdb, FaInstagram, FaTwitter } from 'react-icons/fa'
 
 type Props = {
   params: Promise<{ id: string }>
@@ -44,16 +46,47 @@ const MoviePage = async ({ params }: Props) => {
   return (
     <div className="w-full flex-col">
       <InfoPage movie={data} />
-      <h2 className="m-6 mb-3 text-balance text-center text-3xl font-bold md:text-wrap md:text-left md:text-4xl">
-        Elenco principal
-      </h2>
-      <div className="flex flex-col px-6 md:flex-row">
-        <GridColumns className="grid-cols-[repeat(auto-fill,_minmax(9.80rem,_1fr))] md:flex-[2] md:grid-cols-[repeat(auto-fill,_minmax(11.43rem,_1fr))]">
-          {data.credits.cast.slice(0, 9).map((person) => (
-            <InfoCard key={person.id} person={person} />
-          ))}
-        </GridColumns>
-        <div className="ml-6 md:flex-1">oioioi</div>
+      <div className="m-6 flex flex-col md:flex-row">
+        <div className="md:flex-[2]">
+          <h2 className="mb-3 text-balance text-center text-3xl font-bold md:text-wrap md:text-left md:text-4xl">
+            Elenco principal
+          </h2>
+          <GridColumns className="grid-cols-[repeat(auto-fill,_minmax(9.80rem,_1fr))] md:grid-cols-[repeat(auto-fill,_minmax(11.43rem,_1fr))]">
+            {data.credits.cast.slice(0, 9).map((person) => (
+              <InfoCard key={person.id} person={person} />
+            ))}
+          </GridColumns>
+        </div>
+        <div className="mt-6 flex justify-center gap-6 md:ml-6 md:mt-0 md:flex-1 md:justify-start">
+          <Anchor
+            href={`https://www.facebook.com/${data.external_ids.facebook_id}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaFacebook />
+          </Anchor>
+          <Anchor
+            href={`https://www.instagram.com/${data.external_ids.instagram_id}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaInstagram />
+          </Anchor>
+          <Anchor
+            href={`https://x.com/${data.external_ids.twitter_id}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaTwitter />
+          </Anchor>
+          <Anchor
+            href={`https://www.imdb.com/pt/title/${data.external_ids.imdb_id}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaImdb />
+          </Anchor>
+        </div>
       </div>
     </div>
   )
