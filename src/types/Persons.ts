@@ -8,4 +8,5 @@ export interface Person {
   name: string
   known_for: Production[]
   profile_path: string
+  character?: string
 }

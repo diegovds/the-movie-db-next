@@ -48,13 +48,15 @@ const InfoCard = ({ movie, serie, person }: InfoCardProps) => {
         {movie ? movie.title : serie ? serie.name : person?.name}
       </h2>
       {(movie || serie) && (
-        <data className="text-center text-xs text-gray-400">
+        <p className="text-center text-xs text-gray-400">
           {dateFormatting(movie ? movie.release_date : serie?.first_air_date)}
-        </data>
+        </p>
       )}
       {person && (
         <p className="text-center text-xs text-gray-400">
-          {productionsList(person.known_for)}
+          {!person.character
+            ? productionsList(person.known_for)
+            : person.character}
         </p>
       )}
     </Link>

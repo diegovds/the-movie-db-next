@@ -1,3 +1,5 @@
+import { Person } from './Persons'
+
 export interface Genre {
   id: number
   name: string
@@ -11,6 +13,10 @@ interface Results {
   results: MovieKey[]
 }
 
+interface Cast {
+  cast: Person[]
+}
+
 export interface Movie {
   id: number
   title: string
@@ -22,4 +28,5 @@ export interface Movie {
   runtime: number
   videos: Results
   vote_average: number
+  credits: Cast
 }
