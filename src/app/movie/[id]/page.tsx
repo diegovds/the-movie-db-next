@@ -4,7 +4,8 @@ import InfoCard from '@/app/components/InfoCard'
 import InfoPage from '@/app/components/InfoPage'
 import { Movie } from '@/types/Movies'
 import { Metadata } from 'next'
-import { FaFacebook, FaImdb, FaInstagram, FaTwitter } from 'react-icons/fa'
+import { FaFacebook, FaImdb, FaInstagram } from 'react-icons/fa'
+import { FaXTwitter } from 'react-icons/fa6'
 
 type Props = {
   params: Promise<{ id: string }>
@@ -77,7 +78,7 @@ const MoviePage = async ({ params }: Props) => {
             target="_blank"
             rel="noreferrer"
           >
-            <FaTwitter />
+            <FaXTwitter />
           </Anchor>
           <Anchor
             href={`https://www.imdb.com/pt/title/${data.external_ids.imdb_id}`}
