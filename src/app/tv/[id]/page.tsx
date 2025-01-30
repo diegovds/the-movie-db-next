@@ -1,5 +1,5 @@
 import InfoPage from '@/app/components/InfoPage'
-import { Movie } from '@/types/Movies'
+import { Serie } from '@/types/Series'
 import { Metadata } from 'next'
 
 type Props = {
@@ -10,15 +10,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = (await params).id
 
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${id}?${process.env.THE_MOVIE_DB}&include_adult=false&append_to_response=videos,external_ids,recommendations,keywords,credits`,
+    `https://api.themoviedb.org/3/tv/${id}?${process.env.THE_MOVIE_DB}&include_adult=false&append_to_response=videos,external_ids,recommendations,keywords,credits`,
   )
-  const data: Movie = await response.json()
+  const data: Serie = await response.json()
 
   return {
-    title: `The Movie BD NextJS - ${data.title}`,
+    title: `The Movie BD NextJS - ${data.name}`,
     description: `${data.overview}`,
     openGraph: {
-      title: `The Movie BD NextJS - ${data.title}`,
+      title: `The Movie BD NextJS - ${data.name}`,
       description: `${data.overview}`,
       images: [`https://image.tmdb.org/t/p/w500${data.poster_path}`],
     },
@@ -29,7 +29,7 @@ const MoviePage = async ({ params }: Props) => {
   const { id } = await params
 
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${id}?${process.env.THE_MOVIE_DB}&include_adult=false&append_to_response=videos,external_ids,recommendations,keywords,credits`,
+    `https://api.themoviedb.org/3/tv/${id}?${process.env.THE_MOVIE_DB}&include_adult=false&append_to_response=videos,external_ids,recommendations,keywords,credits`,
     {
       cache: 'no-store',
       next: {
@@ -37,9 +37,9 @@ const MoviePage = async ({ params }: Props) => {
       },
     },
   )
-  const data: Movie = await response.json()
+  const data: Serie = await response.json()
 
-  return <InfoPage movie={data} />
+  return <InfoPage serie={data} />
 }
 
 export default MoviePage

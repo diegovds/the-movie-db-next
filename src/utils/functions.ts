@@ -23,7 +23,7 @@ export const dateFormatting = (date: Date | undefined): string => {
   return dayjs.utc(date).tz('America/Sao_Paulo').format('D[ de ]MMMM[ de ]YYYY')
 }
 
-export const genresList = (genres: Genre[]) => {
+export const genresList = (genres: Genre[] | undefined) => {
   if (genres === null || genres === undefined) return false
   let list = ''
 

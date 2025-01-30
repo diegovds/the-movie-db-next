@@ -18,7 +18,7 @@ const ModalDiv = ({ movie }: ModalDivProps) => {
   }
 
   return (
-    <div>
+    <div className="my-6">
       <button
         onClick={() => setIsOpen(true)}
         className="flex items-center gap-3 text-lg font-bold transition-opacity hover:opacity-80"
