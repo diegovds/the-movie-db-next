@@ -10,8 +10,6 @@ type SocialMediaProps = {
 }
 
 const SocialMedia = ({ face, imdb, insta, x }: SocialMediaProps) => {
-  console.log(face)
-
   return (
     <div className="flex justify-center gap-6 md:justify-start">
       {face !== null && face !== '' && (
