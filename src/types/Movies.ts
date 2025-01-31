@@ -9,7 +9,7 @@ interface MovieKey {
   key: string
 }
 
-interface Results {
+export interface Results {
   results: MovieKey[]
 }
 
