@@ -93,7 +93,7 @@ const MoviePage = async ({ params }: Props) => {
           </div>
           <div className="flex flex-col items-center md:items-start">
             <TagH2 className="mt-6 md:mt-3">Título original</TagH2>
-            <p>{data.original_title}</p>
+            <p className="text-center">{data.original_title}</p>
             <TagH2>Situação</TagH2>
             <p>{data.status === 'Released' ? 'Lançado' : 'Em produção'}</p>
             <TagH2>Orçamento</TagH2>
