@@ -24,6 +24,15 @@ interface Social {
   twitter_id: string
 }
 
+interface Content {
+  id: number
+  name: string
+}
+
+interface Keyword {
+  keywords: Content[]
+}
+
 export interface Movie {
   id: number
   title: string
@@ -41,4 +50,5 @@ export interface Movie {
   budget: number
   revenue: number
   status: string
+  keywords: Keyword
 }

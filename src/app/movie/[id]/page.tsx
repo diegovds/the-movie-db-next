@@ -2,6 +2,7 @@ import Anchor from '@/app/components/Anchor'
 import GridColumns from '@/app/components/GridColumns'
 import InfoCard from '@/app/components/InfoCard'
 import InfoPage from '@/app/components/InfoPage'
+import Keyword from '@/app/components/Keyword'
 import TagH2 from '@/app/components/TagH2'
 import { Movie } from '@/types/Movies'
 import { FormatterDollar } from '@/utils/functions'
@@ -100,6 +101,16 @@ const MoviePage = async ({ params }: Props) => {
             <p>{FormatterDollar(data.budget)}</p>
             <TagH2>Receita</TagH2>
             <p>{FormatterDollar(data.revenue)}</p>
+          </div>
+          <div>
+            <TagH2 className="mb-2 text-center md:text-left">
+              Palavras-chave
+            </TagH2>
+            <div className="flex flex-wrap justify-center gap-3 md:justify-start">
+              {data.keywords.keywords.map((keyword) => (
+                <Keyword key={keyword.id}>{keyword.name}</Keyword>
+              ))}
+            </div>
           </div>
         </div>
       </div>
