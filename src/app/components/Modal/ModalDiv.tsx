@@ -1,16 +1,18 @@
 'use client'
 
 import { Movie } from '@/types/Movies'
+import { Serie } from '@/types/Series'
 import { useState } from 'react'
 import { BsPlayFill } from 'react-icons/bs'
 import { IoClose } from 'react-icons/io5'
 import Modal from '.'
 
 type ModalDivProps = {
-  movie: Movie
+  movie?: Movie
+  serie?: Serie
 }
 
-const ModalDiv = ({ movie }: ModalDivProps) => {
+const ModalDiv = ({ movie, serie }: ModalDivProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleIsOpen = () => {
@@ -35,12 +37,22 @@ const ModalDiv = ({ movie }: ModalDivProps) => {
               <IoClose className="rounded-full bg-black text-2xl transition-opacity hover:opacity-80 md:text-4xl" />
             </button>
           </div>
-          <iframe
-            width="100%"
-            className="aspect-video"
-            src={`https://www.youtube.com/embed/${movie.videos.results[0].key}`}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          />
+          {movie && (
+            <iframe
+              width="100%"
+              className="aspect-video"
+              src={`https://www.youtube.com/embed/${movie.videos.results[0].key}`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            />
+          )}
+          {serie && (
+            <iframe
+              width="100%"
+              className="aspect-video"
+              src={`https://www.youtube.com/embed/${serie.videos.results[0].key}`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            />
+          )}
         </Modal>
       )}
     </div>

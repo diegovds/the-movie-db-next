@@ -55,7 +55,7 @@ const InfoPage = ({ movie, serie }: InfoPageProps) => {
             <ModalDiv movie={movie} />
           )}
           {serie && serie.videos.results.length > 0 && (
-            <ModalDiv movie={serie} />
+            <ModalDiv serie={serie} />
           )}
           {movie && (
             <h3

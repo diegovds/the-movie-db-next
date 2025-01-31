@@ -1,4 +1,4 @@
-import { Cast, Content, Results, Social } from './Movies'
+import { Cast, Content, Genre, Results, Social } from './Movies'
 
 interface Keyword {
   results: Content[]
@@ -11,6 +11,8 @@ export type Serie = {
   status: string
   overview: string
   poster_path: string
+  genres: Genre[]
+  backdrop_path: string
   videos: Results
   vote_average: number
   name: string
