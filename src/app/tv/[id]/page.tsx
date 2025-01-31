@@ -1,3 +1,5 @@
+import GridColumns from '@/app/components/GridColumns'
+import InfoCard from '@/app/components/InfoCard'
 import InfoPage from '@/app/components/InfoPage'
 import { Serie } from '@/types/Series'
 import { Metadata } from 'next'
@@ -39,7 +41,24 @@ const MoviePage = async ({ params }: Props) => {
   )
   const data: Serie = await response.json()
 
-  return <InfoPage serie={data} />
+  return (
+    <div className="w-full flex-col">
+      <InfoPage serie={data} />
+      <div className="m-6 flex flex-col md:flex-row">
+        <div className="md:flex-[2]">
+          <h2 className="mb-3 text-balance text-center text-2xl font-bold md:text-wrap md:text-left md:text-3xl">
+            Elenco principal
+          </h2>
+          <GridColumns className="md:grid-cols-[repeat(auto-fill,_minmax(11.40rem,_1fr))]">
+            {data.credits.cast.slice(0, 8).map((person) => (
+              <InfoCard key={person.id} person={person} />
+            ))}
+          </GridColumns>
+        </div>
+        <div className="mt-6 md:ml-6 md:mt-0 md:flex-1"></div>
+      </div>
+    </div>
+  )
 }
 
 export default MoviePage
