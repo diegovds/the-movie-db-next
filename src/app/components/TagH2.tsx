@@ -5,7 +5,10 @@ type TagH2Props = HTMLAttributes<HTMLHeadingElement>
 
 const TagH2 = ({ children, className, ...props }: TagH2Props) => {
   return (
-    <h2 className={cn('mt-6 text-2xl font-bold', className)} {...props}>
+    <h2
+      className={cn('mt-6 text-xl font-bold md:text-2xl', className)}
+      {...props}
+    >
       {children}
     </h2>
   )
