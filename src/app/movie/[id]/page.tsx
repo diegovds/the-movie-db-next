@@ -1,14 +1,12 @@
-import Anchor from '@/app/components/Anchor'
 import GridColumns from '@/app/components/GridColumns'
 import InfoCard from '@/app/components/InfoCard'
 import InfoPage from '@/app/components/InfoPage'
 import Keyword from '@/app/components/Keyword'
+import SocialMedia from '@/app/components/SocialMedia'
 import TagH2 from '@/app/components/TagH2'
 import { Movie } from '@/types/Movies'
 import { FormatterDollar } from '@/utils/functions'
 import { Metadata } from 'next'
-import { FaFacebook, FaImdb, FaInstagram } from 'react-icons/fa'
-import { FaXTwitter } from 'react-icons/fa6'
 
 type Props = {
   params: Promise<{ id: string }>
@@ -52,46 +50,22 @@ const MoviePage = async ({ params }: Props) => {
       <InfoPage movie={data} />
       <div className="m-6 flex flex-col md:flex-row">
         <div className="md:flex-[2]">
-          <h2 className="mb-3 text-balance text-center text-3xl font-bold md:text-wrap md:text-left md:text-4xl">
+          <h2 className="mb-3 text-balance text-center text-2xl font-bold md:text-wrap md:text-left md:text-3xl">
             Elenco principal
           </h2>
-          <GridColumns className="grid-cols-[repeat(auto-fill,_minmax(9.80rem,_1fr))] md:grid-cols-[repeat(auto-fill,_minmax(11.43rem,_1fr))]">
-            {data.credits.cast.slice(0, 9).map((person) => (
+          <GridColumns className="md:grid-cols-[repeat(auto-fill,_minmax(11.40rem,_1fr))]">
+            {data.credits.cast.slice(0, 8).map((person) => (
               <InfoCard key={person.id} person={person} />
             ))}
           </GridColumns>
         </div>
         <div className="mt-6 md:ml-6 md:mt-0 md:flex-1">
-          <div className="flex justify-center gap-6 md:justify-start">
-            <Anchor
-              href={`https://www.facebook.com/${data.external_ids.facebook_id}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaFacebook />
-            </Anchor>
-            <Anchor
-              href={`https://www.instagram.com/${data.external_ids.instagram_id}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaInstagram />
-            </Anchor>
-            <Anchor
-              href={`https://x.com/${data.external_ids.twitter_id}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaXTwitter />
-            </Anchor>
-            <Anchor
-              href={`https://www.imdb.com/pt/title/${data.external_ids.imdb_id}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaImdb />
-            </Anchor>
-          </div>
+          <SocialMedia
+            face={data.external_ids.facebook_id}
+            insta={data.external_ids.instagram_id}
+            x={data.external_ids.twitter_id}
+            imdb={data.external_ids.imdb_id}
+          />
           <div className="flex flex-col items-center md:items-start">
             <TagH2 className="mt-6 md:mt-3">Título original</TagH2>
             <p className="text-center">{data.original_title}</p>
