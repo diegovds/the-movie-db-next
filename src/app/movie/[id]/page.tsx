@@ -5,7 +5,7 @@ import Keyword from '@/app/components/Keyword'
 import SocialMedia from '@/app/components/SocialMedia'
 import TagH2 from '@/app/components/TagH2'
 import { Movie } from '@/types/Movies'
-import { FormatterDollar } from '@/utils/functions'
+import { FormatterDollar, StatusMovieToBr } from '@/utils/functions'
 import { Metadata } from 'next'
 
 type Props = {
@@ -70,7 +70,7 @@ const MoviePage = async ({ params }: Props) => {
             <TagH2 className="mt-6 md:mt-3">Título original</TagH2>
             <p className="text-center">{data.original_title}</p>
             <TagH2>Situação</TagH2>
-            <p>{data.status === 'Released' ? 'Lançado' : 'Em produção'}</p>
+            <p>{StatusMovieToBr(data.status)}</p>
             <TagH2>Orçamento</TagH2>
             <p>{FormatterDollar(data.budget)}</p>
             <TagH2>Receita</TagH2>
