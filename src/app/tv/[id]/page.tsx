@@ -1,8 +1,13 @@
 import GridColumns from '@/app/components/GridColumns'
 import InfoCard from '@/app/components/InfoCard'
 import InfoPage from '@/app/components/InfoPage'
+import Keyword from '@/app/components/Keyword'
+import SocialMedia from '@/app/components/SocialMedia'
+import TagH2 from '@/app/components/TagH2'
 import { Serie } from '@/types/Series'
+import { StatusTvToBr, TypeTvToBr } from '@/utils/functions'
 import { Metadata } from 'next'
+import Image from 'next/image'
 
 type Props = {
   params: Promise<{ id: string }>
@@ -55,7 +60,49 @@ const MoviePage = async ({ params }: Props) => {
             ))}
           </GridColumns>
         </div>
-        <div className="mt-6 md:ml-6 md:mt-0 md:flex-1"></div>
+        <div className="mt-6 md:ml-6 md:mt-0 md:flex-1">
+          <SocialMedia
+            face={data.external_ids.facebook_id}
+            insta={data.external_ids.instagram_id}
+            x={data.external_ids.twitter_id}
+            imdb={data.external_ids.imdb_id}
+          />
+          <div className="flex flex-col items-center md:items-start">
+            <TagH2 className="mt-6 md:mt-3">Título original</TagH2>
+            <p className="text-center">{data.original_name}</p>
+            <TagH2>Situação</TagH2>
+            <p>{StatusTvToBr(data.status)}</p>
+            <TagH2>Emissora</TagH2>
+            <Image
+              src={`https://image.tmdb.org/t/p/h30${data.networks[0].logo_path}`}
+              width={50}
+              height={50}
+              alt="emissora"
+              priority
+              quality={100}
+            />
+            <TagH2>Tipo</TagH2>
+            <p>{TypeTvToBr(data.type)}</p>
+          </div>
+          <div>
+            <TagH2 className="mb-2 text-center md:text-left">
+              Palavras-chave
+            </TagH2>
+            <div className="flex flex-wrap justify-center gap-3 md:justify-start">
+              {data.keywords.results.map((keyword) => (
+                <Keyword key={keyword.id}>{keyword.name}</Keyword>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="m-6 mb-0">
+        <TagH2 className="mb-3">Recomendações</TagH2>
+        <GridColumns>
+          {data.recommendations.results.slice(0, 10).map((recommendation) => (
+            <InfoCard key={recommendation.id} serie={recommendation} />
+          ))}
+        </GridColumns>
       </div>
     </div>
   )

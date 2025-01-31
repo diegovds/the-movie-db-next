@@ -13,18 +13,18 @@ interface Results {
   results: MovieKey[]
 }
 
-interface Cast {
+export interface Cast {
   cast: Person[]
 }
 
-interface Social {
+export interface Social {
   imdb_id: string
   facebook_id: string
   instagram_id: string
   twitter_id: string
 }
 
-interface Content {
+export interface Content {
   id: number
   name: string
 }
