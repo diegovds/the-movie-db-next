@@ -10,9 +10,11 @@ type SocialMediaProps = {
 }
 
 const SocialMedia = ({ face, imdb, insta, x }: SocialMediaProps) => {
+  console.log(face)
+
   return (
     <div className="flex justify-center gap-6 md:justify-start">
-      {face !== null && (
+      {face !== null && face !== '' && (
         <Anchor
           href={`https://www.facebook.com/${face}`}
           target="_blank"
@@ -21,7 +23,7 @@ const SocialMedia = ({ face, imdb, insta, x }: SocialMediaProps) => {
           <FaFacebook />
         </Anchor>
       )}
-      {insta !== null && (
+      {insta !== null && insta !== '' && (
         <Anchor
           href={`https://www.instagram.com/${insta}`}
           target="_blank"
@@ -30,12 +32,12 @@ const SocialMedia = ({ face, imdb, insta, x }: SocialMediaProps) => {
           <FaInstagram />
         </Anchor>
       )}
-      {x !== null && (
+      {x !== null && x !== '' && (
         <Anchor href={`https://x.com/${x}`} target="_blank" rel="noreferrer">
           <FaSquareXTwitter />
         </Anchor>
       )}
-      {imdb !== null && (
+      {imdb !== null && imdb !== '' && (
         <Anchor
           href={`https://www.imdb.com/pt/title/${imdb}`}
           target="_blank"
