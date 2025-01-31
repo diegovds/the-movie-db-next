@@ -2,6 +2,7 @@ import { Serie } from '@/types/Series'
 import GridColumns from '../components/GridColumns'
 import InfoCard from '../components/InfoCard'
 import Pagination from '../components/Pagination'
+import TagH2 from '../components/TagH2'
 
 interface ResponseProps {
   results: Serie[]
@@ -29,7 +30,8 @@ const TvPage = async ({ searchParams }: Props) => {
 
   return (
     <div className="w-full">
-      <GridColumns>
+      <TagH2 className="mb-3 ml-6 mt-0">Séries populares:</TagH2>
+      <GridColumns className="px-6">
         {data.results.map((serie) => (
           <InfoCard key={serie.id} serie={serie} />
         ))}
