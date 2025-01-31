@@ -2,6 +2,7 @@ import { Movie } from '@/types/Movies'
 import GridColumns from './components/GridColumns'
 import InfoCard from './components/InfoCard'
 import Pagination from './components/Pagination'
+import TagH2 from './components/TagH2'
 
 interface ResponseProps {
   results: Movie[]
@@ -29,7 +30,8 @@ const Home = async ({ searchParams }: Props) => {
 
   return (
     <div className="w-full">
-      <GridColumns>
+      <TagH2 className="mb-3 ml-6 mt-0">Filmes populares:</TagH2>
+      <GridColumns className="px-6">
         {data.results.map((movie) => (
           <InfoCard key={movie.id} movie={movie} />
         ))}
