@@ -21,27 +21,35 @@ const InfoCard = ({ movie, serie, person }: InfoCardProps) => {
           ? `/movie/${movie.id}`
           : serie
             ? `/tv/${serie.id}`
-            : `/tv/${person?.id}`
+            : `/person/${person?.id}`
       }
     >
       <div className="relative h-[250px] overflow-hidden rounded-lg md:h-[300px]">
-        <Image
-          src={
-            movie
-              ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-              : serie
-                ? `https://image.tmdb.org/t/p/w500${serie.poster_path}`
-                : `https://image.tmdb.org/t/p/w500${person?.profile_path}`
-          }
-          alt="poster"
-          priority
-          quality={100}
-          fill
-        />
-        {(movie || serie) && (
-          <RatingCircle
-            voteAverage={movie ? movie.vote_average : serie?.vote_average}
-          />
+        {movie?.poster_path || person?.profile_path || serie?.poster_path ? (
+          <>
+            <Image
+              src={
+                movie
+                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                  : serie
+                    ? `https://image.tmdb.org/t/p/w500${serie.poster_path}`
+                    : `https://image.tmdb.org/t/p/w500${person?.profile_path}`
+              }
+              alt="poster"
+              priority
+              quality={100}
+              fill
+            />
+            {(movie || serie) && (
+              <RatingCircle
+                voteAverage={movie ? movie.vote_average : serie?.vote_average}
+              />
+            )}
+          </>
+        ) : (
+          <div className="flex h-full w-full items-center justify-center">
+            <p className="text-xs">Imagem não disponível</p>
+          </div>
         )}
       </div>
       <h2 className="truncate text-center text-sm">
