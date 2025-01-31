@@ -60,3 +60,51 @@ export function FormatterDollar(money: number) {
     currency: 'USD',
   }).format(money)
 }
+
+export function StatusMovieToBr(status: string) {
+  switch (status) {
+    case 'Released':
+      return 'Lançado'
+    case 'Post Production':
+      return 'Pós-Produção'
+    case 'Planned':
+      return 'Planejado'
+  }
+}
+
+export function StatusTvToBr(status: string) {
+  switch (status) {
+    case 'Returning Series':
+      return 'Renovada'
+    case 'Planned':
+      return 'Planejado'
+    case 'In Production':
+      return 'Em produçao'
+    case 'Ended':
+      return 'Finalizada'
+    case 'Cancelad':
+      return 'Cancelada'
+    case 'Pilot':
+      return 'Piloto'
+  }
+}
+
+export function TypeTvToBr(type: string) {
+  switch (type) {
+    case 'Miniseries':
+      return 'Minissérie'
+    case 'Scripted':
+      return 'Roteirizada'
+    case 'Reality':
+      return 'Reality Show'
+  }
+}
+
+export function GetDepartmentPerson(department: string) {
+  switch (department) {
+    case 'Acting':
+      return 'Atuação'
+    case 'Scripted':
+      return 'Roteirização'
+  }
+}
