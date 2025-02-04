@@ -3,10 +3,10 @@ import GridColumns from '@/app/components/GridColumns'
 import InfoCard from '@/app/components/InfoCard'
 import Pagination from '@/app/components/Pagination'
 import TagH2 from '@/app/components/TagH2'
-import { Movie } from '@/types/Movies'
+import { Serie } from '@/types/Series'
 
 interface ResponseProps {
-  results: Movie[]
+  results: Serie[]
   total_pages: number
   total_results: number
 }
@@ -16,12 +16,12 @@ type Props = {
   searchParams: Promise<{ page: number | undefined }>
 }
 
-const SearchMoviePage = async ({ params, searchParams }: Props) => {
+const SearchSeriePage = async ({ params, searchParams }: Props) => {
   const { query } = await params
   const { page } = await searchParams
 
   const response = await fetch(
-    `https://api.themoviedb.org/3/search/movie?${process.env.THE_MOVIE_DB}&include_adult=false&page=${page !== undefined && page > 0 ? page : 1}&query=${query}`,
+    `https://api.themoviedb.org/3/search/tv?${process.env.THE_MOVIE_DB}&include_adult=false&page=${page !== undefined && page > 0 ? page : 1}&query=${query}`,
     {
       cache: 'no-store',
       next: {
@@ -33,7 +33,7 @@ const SearchMoviePage = async ({ params, searchParams }: Props) => {
 
   return (
     <div className="mx-6 w-full">
-      <TagH2 className="ml-0 mt-0">Pesquisa por {query} em filmes:</TagH2>
+      <TagH2 className="ml-0 mt-0">Pesquisa por {query} em séries:</TagH2>
       <div className="my-3 flex gap-6">
         <p>Pesquise em </p>
         <Anchor
@@ -44,24 +44,24 @@ const SearchMoviePage = async ({ params, searchParams }: Props) => {
         </Anchor>
         <p>ou</p>
         <Anchor
-          href={`/search/tv/${query}`}
-          className="text-base font-bold text-yellow-400 md:text-base"
+          href={`/search/movie/${query}`}
+          className="text-base font-bold text-blue-400 md:text-base"
         >
-          Séries
+          Filmes
         </Anchor>
       </div>
       <GridColumns className="px-0">
-        {data.results.map((movie) => (
-          <InfoCard key={movie.id} movie={movie} />
+        {data.results.map((serie) => (
+          <InfoCard key={serie.id} serie={serie} />
         ))}
       </GridColumns>
       <Pagination
         totalPages={data.total_pages}
-        movieSearch={data.results}
+        serieSearch={data.results}
         query={query}
       />
     </div>
   )
 }
 
-export default SearchMoviePage
+export default SearchSeriePage
