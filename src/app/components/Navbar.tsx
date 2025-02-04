@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { FaSearch } from 'react-icons/fa'
+import { IoMdSearch } from 'react-icons/io'
 import { z } from 'zod'
 
 const formSchema = z.object({
@@ -51,14 +51,11 @@ const Navbar = () => {
         <input
           type="text"
           placeholder="Filme, série ou artista"
-          className="rounded-lg bg-gray-300 p-1 outline-none placeholder:text-gray-400"
+          className="w-60 rounded-lg bg-gray-300 p-1 text-sm outline-none placeholder:text-gray-400"
           {...register('query', { required: true })}
         />
-        <button type="submit">
-          <FaSearch
-            className="h-full rounded-md bg-gray-300 px-1 transition-opacity hover:opacity-85"
-            size={22}
-          />
+        <button type="submit" className="w-8">
+          <IoMdSearch className="h-full w-full rounded-md bg-gray-300 px-1 transition-opacity hover:opacity-85" />
         </button>
       </form>
       <ul
