@@ -9,4 +9,5 @@ export interface Person {
   known_for: Production[]
   profile_path: string
   character?: string
+  biography: string
 }
