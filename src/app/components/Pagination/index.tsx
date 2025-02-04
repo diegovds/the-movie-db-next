@@ -20,16 +20,18 @@ const Pagination = ({ totalPages, serie, person }: PaginationProps) => {
   const router = useRouter()
 
   useEffect(() => {
-    if (serie && !pageChanged) {
-      router.push(`tv/?page=${pageCount}`)
-      setPageChanged(true)
-    }
-    if (person && !pageChanged) {
-      router.push(`person/?page=${pageCount}`)
-      setPageChanged(true)
-    }
-    if (!serie && !person) {
-      router.push(`/?page=${pageCount}`)
+    if (pageCount !== 1) {
+      if (serie && !pageChanged) {
+        router.push(`tv/?page=${pageCount}`)
+        setPageChanged(true)
+      }
+      if (person && !pageChanged) {
+        router.push(`person/?page=${pageCount}`)
+        setPageChanged(true)
+      }
+      if (!serie && !person) {
+        router.push(`/?page=${pageCount}`)
+      }
     }
   }, [router, serie, person, pageChanged, pageCount])
 
