@@ -44,7 +44,10 @@ const Navbar = () => {
           <Hamburger size={20} toggled={isOpen} toggle={setOpen} />
         </div>
       </div>
-      <form className="flex gap-2" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className={`gap-2 ${isOpen ? 'flex justify-center pb-3' : 'hidden md:flex'}`}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <input
           type="text"
           placeholder="Filme, série ou artista"
