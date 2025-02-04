@@ -19,18 +19,31 @@ const InfoPage = ({ movie, serie }: InfoPageProps) => {
           background: `linear-gradient(to right, rgb(16, 14, 14) 150px, rgba(16, 14, 14, 0.84) 100%), url(https://image.tmdb.org/t/p/original${movie ? movie.backdrop_path : serie?.backdrop_path}) no-repeat center/cover`,
         }}
       >
-        <div className="relative h-[500px] md:h-[600px] md:flex-1">
-          <Image
-            src={`https://image.tmdb.org/t/p/w500${movie ? movie.poster_path : serie?.poster_path}`}
-            alt="poster"
-            priority
-            quality={100}
-            fill
-            className="rounded-lg"
-          />
-          <RatingCircle
-            voteAverage={movie ? movie.vote_average : serie?.vote_average}
-          />
+        <div className="relative h-[500px] overflow-hidden rounded-lg md:h-[600px] md:flex-1">
+          {movie?.poster_path || serie?.poster_path ? (
+            <>
+              <Image
+                src={
+                  movie
+                    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                    : `https://image.tmdb.org/t/p/w500${serie?.poster_path}`
+                }
+                alt="poster"
+                priority
+                quality={100}
+                fill
+              />
+              {(movie || serie) && (
+                <RatingCircle
+                  voteAverage={movie ? movie.vote_average : serie?.vote_average}
+                />
+              )}
+            </>
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-white">
+              <p className="text-center text-sm">Imagem não disponível</p>
+            </div>
+          )}
         </div>
         <div className="flex flex-col items-center pt-6 text-white md:flex-[2] md:items-start md:pl-6 md:pt-0">
           <h2 className="mb-3 text-balance text-center text-3xl font-bold md:text-wrap md:text-left md:text-4xl">

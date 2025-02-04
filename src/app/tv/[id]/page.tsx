@@ -73,14 +73,16 @@ const MoviePage = async ({ params }: Props) => {
             <TagH2>Situação</TagH2>
             <p>{StatusTvToBr(data.status)}</p>
             <TagH2>Emissora</TagH2>
-            <Image
-              src={`https://image.tmdb.org/t/p/h30${data.networks[0].logo_path}`}
-              width={50}
-              height={50}
-              alt="emissora"
-              priority
-              quality={100}
-            />
+            {data.networks[0] && (
+              <Image
+                src={`https://image.tmdb.org/t/p/h30${data.networks[0].logo_path}`}
+                width={50}
+                height={50}
+                alt="emissora"
+                priority
+                quality={100}
+              />
+            )}
             <TagH2>Tipo</TagH2>
             <p>{TypeTvToBr(data.type)}</p>
           </div>

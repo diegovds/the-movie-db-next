@@ -22,7 +22,7 @@ export type Serie = {
   networks: [
     {
       id: number
-      logo_path: string
+      logo_path?: string
     },
   ]
   keywords: Keyword
