@@ -1,5 +1,6 @@
 'use client'
 
+import { Movie } from '@/types/Movies'
 import { Person } from '@/types/Persons'
 import { Serie } from '@/types/Series'
 import Link from 'next/link'
@@ -12,9 +13,17 @@ type PaginationProps = {
   totalPages: number
   serie?: Serie[]
   person?: Person[]
+  movieSearch?: Movie[]
+  query?: string
 }
 
-const Pagination = ({ totalPages, serie, person }: PaginationProps) => {
+const Pagination = ({
+  totalPages,
+  serie,
+  person,
+  movieSearch,
+  query,
+}: PaginationProps) => {
   const [pageCount, setPageCount] = useState(1)
   const [pageChanged, setPageChanged] = useState(false)
   const router = useRouter()
@@ -29,11 +38,15 @@ const Pagination = ({ totalPages, serie, person }: PaginationProps) => {
         router.push(`person/?page=${pageCount}`)
         setPageChanged(true)
       }
-      if (!serie && !person) {
+      if (movieSearch && query && !pageChanged) {
+        router.push(`/search/movie/${query}/?page=${pageCount}`)
+        setPageChanged(true)
+      }
+      if (!serie && !person && !movieSearch) {
         router.push(`/?page=${pageCount}`)
       }
     }
-  }, [router, serie, person, pageChanged, pageCount])
+  }, [router, serie, person, movieSearch, query, pageChanged, pageCount])
 
   const handleAddingPages = () => {
     if (pageCount < totalPages - 5) {
@@ -54,21 +67,33 @@ const Pagination = ({ totalPages, serie, person }: PaginationProps) => {
       <PaginationButton click={handlePageSubtraction}>
         <FaAngleDoubleLeft />
       </PaginationButton>
-      {Array.from({ length: 5 }).map((_, index) => (
-        <Link
-          key={index}
-          className="min-w-8 rounded-md border border-solid border-gray-300 bg-blue-500 p-2 text-center text-white transition hover:bg-blue-300"
-          href={
-            serie
-              ? `/tv?page=${index + pageCount}`
-              : person
-                ? `/person?page=${index + pageCount}`
-                : `/?page=${index + pageCount}`
-          }
-        >
-          {index + pageCount}
-        </Link>
-      ))}
+      {(() => {
+        const link = []
+        for (
+          let index = 0;
+          index < 5 && index + pageCount <= totalPages;
+          index++
+        ) {
+          link.push(
+            <Link
+              key={index}
+              className="min-w-8 rounded-md border border-solid border-gray-300 bg-blue-500 p-2 text-center text-white transition hover:bg-blue-300"
+              href={
+                serie
+                  ? `/tv?page=${index + pageCount}`
+                  : person
+                    ? `/person?page=${index + pageCount}`
+                    : movieSearch
+                      ? `/search/movie/${query}/?page=${index + pageCount}`
+                      : `/?page=${index + pageCount}`
+              }
+            >
+              {index + pageCount}
+            </Link>,
+          )
+        }
+        return link
+      })()}
       <PaginationButton click={handleAddingPages}>
         <FaAngleDoubleRight />
       </PaginationButton>
