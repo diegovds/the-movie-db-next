@@ -2,6 +2,7 @@ import { Person } from '@/types/Persons'
 import GridColumns from '../components/GridColumns'
 import InfoCard from '../components/InfoCard'
 import Pagination from '../components/Pagination'
+import TagH2 from '../components/TagH2'
 
 interface ResponseProps {
   results: Person[]
@@ -29,7 +30,8 @@ const PersonPage = async ({ searchParams }: Props) => {
 
   return (
     <div className="w-full">
-      <GridColumns>
+      <TagH2 className="mb-3 ml-6 mt-0">Artistas populares:</TagH2>
+      <GridColumns className="px-6">
         {data.results.map((person) => (
           <InfoCard key={person.id} person={person} />
         ))}
