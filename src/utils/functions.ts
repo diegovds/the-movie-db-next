@@ -2,12 +2,10 @@ import { Genre } from '@/types/Movies'
 import { Production } from '@/types/Persons'
 import dayjs from 'dayjs'
 import ptBr from 'dayjs/locale/pt-br'
-import timezone from 'dayjs/plugin/timezone'
 import utc from 'dayjs/plugin/utc'
 
 dayjs.locale(ptBr)
 dayjs.extend(utc)
-dayjs.extend(timezone)
 
 export const runtime = (runtime: number) => {
   const auxH = Math.floor(runtime / 60)
@@ -20,7 +18,7 @@ export const runtime = (runtime: number) => {
 }
 
 export const dateFormatting = (date: Date | undefined): string => {
-  return dayjs.utc(date).tz('America/Sao_Paulo').format('D[ de ]MMMM[ de ]YYYY')
+  return dayjs.utc(date).format('D[ de ]MMMM[ de ]YYYY')
 }
 
 export const genresList = (genres: Genre[] | undefined) => {
@@ -107,4 +105,27 @@ export function GetDepartmentPerson(department: string) {
     case 'Scripted':
       return 'Roteirização'
   }
+}
+
+export function GetGenderPerson(gender: number) {
+  switch (gender) {
+    case 0:
+      return 'Não informado'
+    case 1:
+      return 'Feminino'
+    case 2:
+      return 'Masculino'
+    case 3:
+      return 'Não-binário'
+  }
+}
+
+export const PersonDateFormatting = (date: Date | undefined): string => {
+  return dayjs.utc(date).format('DD/MM/YYYY')
+}
+
+export const GetPersonAge = (birthday: Date | null, deathday: Date | null) => {
+  return deathday !== null
+    ? dayjs.utc(deathday).diff(birthday, 'y')
+    : dayjs.utc().diff(birthday, 'y')
 }

@@ -16,4 +16,10 @@ export interface Person {
     cast: Movie[]
   }
   external_ids: Social
+  known_for_department: string
+  gender: number
+  birthday: Date
+  deathday: Date | null
+  place_of_birth: string
+  also_known_as: string[]
 }

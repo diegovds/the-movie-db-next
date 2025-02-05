@@ -2,6 +2,12 @@ import GridColumns from '@/app/components/GridColumns'
 import InfoCard from '@/app/components/InfoCard'
 import SocialMedia from '@/app/components/SocialMedia'
 import { Person } from '@/types/Persons'
+import {
+  GetDepartmentPerson,
+  GetGenderPerson,
+  GetPersonAge,
+  PersonDateFormatting,
+} from '@/utils/functions'
 import { Metadata } from 'next'
 import Image from 'next/image'
 
@@ -61,15 +67,73 @@ const PersonPage = async ({ params }: Props) => {
           )}
         </div>
         <SocialMedia
-          className="mt-6"
+          className="my-6"
           face={data.external_ids.facebook_id}
           insta={data.external_ids.instagram_id}
           x={data.external_ids.twitter_id}
           imdb={data.external_ids.imdb_id}
         />
+        <h2 className="mb-6 block text-center text-3xl font-bold md:hidden md:text-start md:text-4xl">
+          {data.name}
+        </h2>
+        <h2 className="mb-3 text-center text-2xl font-bold md:text-start md:text-3xl">
+          Informações pessoais
+        </h2>
+        <h2 className="mb-1 text-center text-xl font-bold md:text-start md:text-2xl">
+          Conhecido(a) por
+        </h2>
+        <p className="mb-3 text-center text-base md:text-left">
+          {GetDepartmentPerson(data.known_for_department)}
+        </p>
+        <h2 className="mb-1 text-center text-xl font-bold md:text-start md:text-2xl">
+          Gênero
+        </h2>
+        <p className="mb-3 text-center text-base md:text-left">
+          {GetGenderPerson(data.gender)}
+        </p>
+        <h2 className="mb-1 text-center text-xl font-bold md:text-start md:text-2xl">
+          Nascimento
+        </h2>
+        <p className="mb-3 text-center text-base md:text-left">
+          {data.deathday === null ? (
+            <>
+              {PersonDateFormatting(data.birthday)} (
+              {GetPersonAge(data.birthday, data.deathday)} anos)
+            </>
+          ) : (
+            <>{PersonDateFormatting(data.birthday)}</>
+          )}
+        </p>
+        {data.deathday !== null && (
+          <>
+            <h2 className="mb-1 text-center text-xl font-bold md:text-start md:text-2xl">
+              Falecimento
+            </h2>
+            <p className="mb-3 text-center text-base md:text-left">
+              {PersonDateFormatting(data.deathday)} (
+              {GetPersonAge(data.birthday, data.deathday)} anos)
+            </p>
+          </>
+        )}
+        <h2 className="mb-1 text-center text-xl font-bold md:text-start md:text-2xl">
+          Local de nascimento
+        </h2>
+        <p className="mb-3 text-center text-base md:text-left">
+          {data.place_of_birth}
+        </p>
+        <h2 className="mb-1 text-center text-xl font-bold md:text-start md:text-2xl">
+          Também conhecido(a) como
+        </h2>
+        <div className="flex flex-col gap-1">
+          {data.also_known_as.map((name, index) => (
+            <p key={index} className="text-center text-base md:text-left">
+              {name}
+            </p>
+          ))}
+        </div>
       </div>
       <div className="pt-6 md:flex-[2] md:pl-6 md:pt-0">
-        <h2 className="mb-3 text-center text-3xl font-bold md:text-start md:text-4xl">
+        <h2 className="mb-3 hidden text-center text-3xl font-bold md:block md:text-start md:text-4xl">
           {data.name}
         </h2>
         <h2 className="mb-3 text-center text-2xl font-bold md:text-start md:text-3xl">
