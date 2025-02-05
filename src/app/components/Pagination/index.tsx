@@ -15,6 +15,7 @@ type PaginationProps = {
   person?: Person[]
   movieSearch?: Movie[]
   serieSearch?: Serie[]
+  personSearch?: Person[]
   query?: string
 }
 
@@ -24,6 +25,7 @@ const Pagination = ({
   person,
   movieSearch,
   serieSearch,
+  personSearch,
   query,
 }: PaginationProps) => {
   const [pageCount, setPageCount] = useState(1)
@@ -48,6 +50,10 @@ const Pagination = ({
         router.push(`/search/tv/${query}/?page=${pageCount}`)
         setPageChanged(true)
       }
+      if (personSearch && query && !pageChanged) {
+        router.push(`/search/person/${query}/?page=${pageCount}`)
+        setPageChanged(true)
+      }
       if (!serie && !person && !movieSearch) {
         router.push(`/?page=${pageCount}`)
       }
@@ -58,6 +64,7 @@ const Pagination = ({
     person,
     movieSearch,
     serieSearch,
+    personSearch,
     query,
     pageChanged,
     pageCount,
@@ -102,7 +109,9 @@ const Pagination = ({
                       ? `/search/movie/${query}/?page=${index + pageCount}`
                       : serieSearch
                         ? `/search/tv/${query}/?page=${index + pageCount}`
-                        : `/?page=${index + pageCount}`
+                        : personSearch
+                          ? `/search/person/${query}/?page=${index + pageCount}`
+                          : `/?page=${index + pageCount}`
               }
             >
               {index + pageCount}

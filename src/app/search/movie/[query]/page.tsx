@@ -37,7 +37,7 @@ const SearchMoviePage = async ({ params, searchParams }: Props) => {
       <div className="my-3 flex gap-6">
         <p>Pesquise em </p>
         <Anchor
-          href={`/`}
+          href={`/search/person/${query}`}
           className="text-base font-bold text-green-500 md:text-base"
         >
           Artistas
