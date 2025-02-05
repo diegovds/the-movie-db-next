@@ -1,17 +1,29 @@
+import { HTMLAttributes } from 'react'
 import { FaFacebook, FaImdb, FaInstagram } from 'react-icons/fa'
 import { FaSquareXTwitter } from 'react-icons/fa6'
 import Anchor from './Anchor'
+import { cn } from '@/libs/utils'
 
-type SocialMediaProps = {
+type SocialMediaProps = HTMLAttributes<HTMLDivElement> & {
   face: string
   insta: string
   x: string
   imdb: string
 }
 
-const SocialMedia = ({ face, imdb, insta, x }: SocialMediaProps) => {
+const SocialMedia = ({
+  face,
+  insta,
+  x,
+  imdb,
+  className,
+  ...props
+}: SocialMediaProps) => {
   return (
-    <div className="flex justify-center gap-6 md:justify-start">
+    <div
+      className={cn('flex justify-center gap-6 md:justify-start', className)}
+      {...props}
+    >
       {face !== null && face !== '' && (
         <Anchor
           href={`https://www.facebook.com/${face}`}
