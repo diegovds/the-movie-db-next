@@ -4,7 +4,7 @@ import { Movie } from '@/types/Movies'
 import { Person } from '@/types/Persons'
 import { Serie } from '@/types/Series'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa'
 import PaginationButton from './PaginationButton'
@@ -28,7 +28,11 @@ const Pagination = ({
   personSearch,
   query,
 }: PaginationProps) => {
-  const [pageCount, setPageCount] = useState(1)
+  const searchParams = useSearchParams()
+  const page = searchParams.get('page')
+  const [pageCount, setPageCount] = useState(
+    page === null || isNaN(parseInt(page)) ? 1 : parseInt(page),
+  )
   const [pageChanged, setPageChanged] = useState(false)
   const router = useRouter()
 
