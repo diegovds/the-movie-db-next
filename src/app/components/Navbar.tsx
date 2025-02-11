@@ -2,12 +2,14 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Rotate as Hamburger } from 'hamburger-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { IoMdSearch } from 'react-icons/io'
 import { z } from 'zod'
+import logo from '../../assets/logo.png'
 
 const formSchema = z.object({
   query: z.string(),
@@ -36,8 +38,8 @@ const Navbar = () => {
   return (
     <nav className="flex flex-col justify-between bg-gray-800 px-6 py-1 md:flex-row md:py-2">
       <div className="flex justify-between">
-        <Link className="flex items-center text-gray-300" href={`/`}>
-          Icon
+        <Link className="flex items-center" href={`/`}>
+          <Image src={logo} width={40} alt="Logo" />
         </Link>
 
         <div className="text-gray-300 md:hidden">
