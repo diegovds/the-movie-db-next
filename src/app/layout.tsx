@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className={`${poppins.className} bg-gray-100`}>
+    <html lang="pt-BR" className={`${poppins.className} bg-[#272727]`}>
       <body className="flex min-h-dvh flex-col antialiased">
         <Navbar />
         <main className="my-6 flex flex-1">{children}</main>
