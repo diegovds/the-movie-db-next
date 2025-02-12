@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa'
-import PaginationButton from './PaginationButton'
+import PaginationIcon from './PaginationIcon'
 
 type PaginationProps = {
   totalPages: number
@@ -17,6 +17,10 @@ type PaginationProps = {
   serieSearch?: Serie[]
   personSearch?: Person[]
   query?: string
+}
+
+type HandlePageProps = {
+  operation: 'add' | 'sub'
 }
 
 const Pagination = ({
@@ -74,15 +78,13 @@ const Pagination = ({
     pageCount,
   ])
 
-  const handleAddingPages = () => {
-    if (pageCount < totalPages - 5) {
+  const handlePage = ({ operation }: HandlePageProps) => {
+    if (pageCount < totalPages - 5 && operation === 'add') {
       setPageCount(pageCount + 5)
       setPageChanged(false)
     }
-  }
 
-  const handlePageSubtraction = () => {
-    if (pageCount > 5) {
+    if (pageCount > 5 && operation === 'sub') {
       setPageCount(pageCount - 5)
       setPageChanged(false)
     }
@@ -90,9 +92,11 @@ const Pagination = ({
 
   return (
     <div className="mt-6 flex justify-center">
-      <PaginationButton click={handlePageSubtraction}>
-        <FaAngleDoubleLeft />
-      </PaginationButton>
+      <button onClick={() => handlePage({ operation: 'sub' })}>
+        <PaginationIcon>
+          <FaAngleDoubleLeft />
+        </PaginationIcon>
+      </button>
       {(() => {
         const link = []
         for (
@@ -103,7 +107,6 @@ const Pagination = ({
           link.push(
             <Link
               key={index}
-              className="min-w-8 rounded-md border border-solid border-gray-300 bg-blue-500 p-2 text-center text-white transition hover:bg-blue-300"
               href={
                 serie
                   ? `/tv?page=${index + pageCount}`
@@ -118,15 +121,17 @@ const Pagination = ({
                           : `/?page=${index + pageCount}`
               }
             >
-              {index + pageCount}
+              <PaginationIcon>{index + pageCount}</PaginationIcon>
             </Link>,
           )
         }
         return link
       })()}
-      <PaginationButton click={handleAddingPages}>
-        <FaAngleDoubleRight />
-      </PaginationButton>
+      <button onClick={() => handlePage({ operation: 'add' })}>
+        <PaginationIcon>
+          <FaAngleDoubleRight />
+        </PaginationIcon>
+      </button>
     </div>
   )
 }
