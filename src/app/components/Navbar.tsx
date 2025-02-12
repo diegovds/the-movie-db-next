@@ -36,7 +36,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="flex flex-col justify-between bg-gray-800 px-6 py-1 md:flex-row md:py-2">
+    <nav className="flex flex-col justify-between bg-[#131313] px-6 py-1 md:flex-row md:py-2">
       <div className="flex justify-between">
         <Link className="flex items-center" href={`/`}>
           <Image src={logo} width={40} alt="Logo" />
@@ -64,17 +64,17 @@ const Navbar = () => {
         className={`flex items-center gap-3 ${isOpen ? 'flex-col pb-3' : 'hidden flex-row md:flex'}`}
       >
         <li
-          className={`${pathname === '/' ? 'bg-gray-300' : 'text-gray-300'} rounded-lg p-1`}
+          className={`${pathname === '/' ? 'bg-gray-300' : 'text-gray-300'} rounded-lg p-1 transition-opacity hover:opacity-85`}
         >
           <Link href={`/`}>Filmes</Link>
         </li>
         <li
-          className={`${pathname === '/tv' ? 'bg-gray-300' : 'text-gray-300'} rounded-lg p-1`}
+          className={`${pathname === '/tv' ? 'bg-gray-300' : 'text-gray-300'} rounded-lg p-1 transition-opacity hover:opacity-85`}
         >
           <Link href={`/tv`}>Séries</Link>
         </li>
         <li
-          className={`${pathname === '/person' ? 'bg-gray-300' : 'text-gray-300'} rounded-lg p-1`}
+          className={`${pathname === '/person' ? 'bg-gray-300' : 'text-gray-300'} rounded-lg p-1 transition-opacity hover:opacity-85`}
         >
           <Link href={`/person`}>Artistas</Link>
         </li>
