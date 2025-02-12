@@ -58,7 +58,7 @@ const Pagination = ({
         router.push(`/search/person/${query}/?page=${pageCount}`)
         setPageChanged(true)
       }
-      if (!serie && !person && !movieSearch) {
+      if (!serie && !person && !movieSearch && !serieSearch && !personSearch) {
         router.push(`/?page=${pageCount}`)
       }
     }
