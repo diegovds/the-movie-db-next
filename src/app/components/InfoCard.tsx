@@ -47,7 +47,7 @@ const InfoCard = ({ movie, serie, person }: InfoCardProps) => {
             )}
           </>
         ) : (
-          <div className="flex h-full w-full items-center justify-center">
+          <div className="flex h-full w-full items-center justify-center bg-white">
             <p className="text-center text-xs">Imagem não disponível</p>
           </div>
         )}
