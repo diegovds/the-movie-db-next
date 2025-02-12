@@ -49,7 +49,7 @@ const PersonPage = async ({ params }: Props) => {
   const data: Person = await response.json()
 
   return (
-    <div className="flex w-full flex-col px-6 md:flex-row">
+    <div className="flex w-full flex-col px-6 text-gray-100 md:flex-row">
       <div className="md:flex-1">
         <div className="relative h-[500px] overflow-hidden rounded-lg md:h-[600px]">
           {data.profile_path ? (
