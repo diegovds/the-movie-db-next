@@ -15,7 +15,7 @@ type InfoCardProps = {
 const InfoCard = ({ movie, serie, person }: InfoCardProps) => {
   return (
     <Link
-      className="flex flex-col gap-2 overflow-hidden rounded-lg bg-gray-50 p-3 shadow-md"
+      className="flex flex-col gap-2 overflow-hidden rounded-lg bg-[#131313] p-3 shadow-md"
       href={
         movie
           ? `/movie/${movie.id}`
@@ -52,7 +52,7 @@ const InfoCard = ({ movie, serie, person }: InfoCardProps) => {
           </div>
         )}
       </div>
-      <h2 className="truncate text-center text-sm">
+      <h2 className="truncate text-center text-sm text-gray-100">
         {movie ? movie.title : serie ? serie.name : person?.name}
       </h2>
       {(movie || serie) && (
