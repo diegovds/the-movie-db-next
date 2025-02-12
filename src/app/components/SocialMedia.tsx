@@ -1,8 +1,8 @@
+import { cn } from '@/libs/utils'
 import { HTMLAttributes } from 'react'
 import { FaFacebook, FaImdb, FaInstagram } from 'react-icons/fa'
 import { FaSquareXTwitter } from 'react-icons/fa6'
 import Anchor from './Anchor'
-import { cn } from '@/libs/utils'
 
 type SocialMediaProps = HTMLAttributes<HTMLDivElement> & {
   face: string
@@ -30,7 +30,7 @@ const SocialMedia = ({
           target="_blank"
           rel="noreferrer"
         >
-          <FaFacebook />
+          <FaFacebook className="text-gray-100" />
         </Anchor>
       )}
       {insta !== null && insta !== '' && (
@@ -39,12 +39,12 @@ const SocialMedia = ({
           target="_blank"
           rel="noreferrer"
         >
-          <FaInstagram />
+          <FaInstagram className="text-gray-100" />
         </Anchor>
       )}
       {x !== null && x !== '' && (
         <Anchor href={`https://x.com/${x}`} target="_blank" rel="noreferrer">
-          <FaSquareXTwitter />
+          <FaSquareXTwitter className="text-gray-100" />
         </Anchor>
       )}
       {imdb !== null && imdb !== '' && (
@@ -53,7 +53,7 @@ const SocialMedia = ({
           target="_blank"
           rel="noreferrer"
         >
-          <FaImdb />
+          <FaImdb className="text-gray-100" />
         </Anchor>
       )}
     </div>
