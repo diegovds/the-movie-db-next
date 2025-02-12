@@ -45,7 +45,7 @@ const InfoPage = ({ movie, serie }: InfoPageProps) => {
             </div>
           )}
         </div>
-        <div className="flex flex-col items-center pt-6 text-white md:flex-[2] md:items-start md:pl-6 md:pt-0">
+        <div className="flex flex-col items-center pt-6 text-gray-100 md:flex-[2] md:items-start md:pl-6 md:pt-0">
           <h2 className="mb-3 text-balance text-center text-3xl font-bold md:text-wrap md:text-left md:text-4xl">
             {movie ? movie.title : serie?.name}
           </h2>
@@ -55,11 +55,11 @@ const InfoPage = ({ movie, serie }: InfoPageProps) => {
                 movie ? movie.release_date : serie?.first_air_date,
               )}
             </p>
-            <div className="mx-0 my-auto hidden h-[6px] w-[6px] rounded-[999px] bg-white md:block" />
+            <div className="mx-0 my-auto hidden h-[6px] w-[6px] rounded-[999px] bg-gray-100 md:block" />
             <p>{genresList(movie ? movie.genres : serie?.genres)}</p>
             {!serie && movie && (
               <>
-                <div className="mx-0 my-auto hidden h-[6px] w-[6px] rounded-[999px] bg-white md:block" />
+                <div className="mx-0 my-auto hidden h-[6px] w-[6px] rounded-[999px] bg-gray-100 md:block" />
                 <p>{runtime(movie.runtime)}</p>
               </>
             )}

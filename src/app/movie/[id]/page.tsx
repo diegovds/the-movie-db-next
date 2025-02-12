@@ -50,7 +50,7 @@ const MoviePage = async ({ params }: Props) => {
       <InfoPage movie={data} />
       <div className="m-6 flex flex-col md:flex-row">
         <div className="md:flex-[2]">
-          <h2 className="mb-3 text-balance text-center text-2xl font-bold md:text-wrap md:text-left md:text-3xl">
+          <h2 className="mb-3 text-balance text-center text-2xl font-bold text-gray-100 md:text-wrap md:text-left md:text-3xl">
             Elenco principal
           </h2>
           <GridColumns className="md:grid-cols-[repeat(auto-fill,_minmax(11.40rem,_1fr))]">
@@ -68,13 +68,13 @@ const MoviePage = async ({ params }: Props) => {
           />
           <div className="flex flex-col items-center md:items-start">
             <TagH2 className="mt-6 md:mt-3">Título original</TagH2>
-            <p className="text-center">{data.original_title}</p>
+            <p className="text-center text-gray-100">{data.original_title}</p>
             <TagH2>Situação</TagH2>
-            <p>{StatusMovieToBr(data.status)}</p>
+            <p className="text-gray-100">{StatusMovieToBr(data.status)}</p>
             <TagH2>Orçamento</TagH2>
-            <p>{FormatterDollar(data.budget)}</p>
+            <p className="text-gray-100">{FormatterDollar(data.budget)}</p>
             <TagH2>Receita</TagH2>
-            <p>{FormatterDollar(data.revenue)}</p>
+            <p className="text-gray-100">{FormatterDollar(data.revenue)}</p>
           </div>
           <div>
             <TagH2 className="mb-2 text-center md:text-left">

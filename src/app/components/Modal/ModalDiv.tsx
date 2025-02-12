@@ -30,11 +30,11 @@ const ModalDiv = ({ movie, serie }: ModalDivProps) => {
       {isOpen && (
         <Modal closeModal={handleIsOpen}>
           <div className="mb-2 flex justify-between">
-            <h3 className="text-xl font-bold text-black md:text-4xl">
+            <h3 className="text-xl font-bold text-gray-100 md:text-4xl">
               Trailer
             </h3>
             <button onClick={() => handleIsOpen()}>
-              <IoClose className="rounded-full bg-black text-2xl transition-opacity hover:opacity-80 md:text-4xl" />
+              <IoClose className="rounded-full bg-gray-100 text-2xl text-black transition-opacity hover:opacity-85 md:text-4xl" />
             </button>
           </div>
           {movie && (
