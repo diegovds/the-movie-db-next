@@ -35,7 +35,9 @@ const Pagination = ({
   const searchParams = useSearchParams()
   const page = searchParams.get('page')
   const [pageCount, setPageCount] = useState(
-    page === null || isNaN(parseInt(page)) ? 1 : parseInt(page),
+    page === null || isNaN(parseInt(page)) || parseInt(page) <= 0
+      ? 1
+      : parseInt(page),
   )
   const [pageChanged, setPageChanged] = useState(false)
   const router = useRouter()
@@ -86,6 +88,11 @@ const Pagination = ({
 
     if (pageCount > 5 && operation === 'sub') {
       setPageCount(pageCount - 5)
+      setPageChanged(false)
+    }
+
+    if (pageCount > 0 && pageCount < 5 && operation === 'sub') {
+      setPageCount(pageCount + 1 - pageCount)
       setPageChanged(false)
     }
   }
