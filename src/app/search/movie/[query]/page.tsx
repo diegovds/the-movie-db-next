@@ -35,14 +35,14 @@ const SearchMoviePage = async ({ params, searchParams }: Props) => {
     <div className="mx-6 w-full">
       <TagH2 className="ml-0 mt-0">Pesquisa por {query} em filmes:</TagH2>
       <div className="my-3 flex gap-6">
-        <p>Pesquise em </p>
+        <p className="text-gray-100">Pesquise em </p>
         <Anchor
           href={`/search/person/${query}`}
           className="text-base font-bold text-green-500 md:text-base"
         >
           Artistas
         </Anchor>
-        <p>ou</p>
+        <p className="text-gray-100">ou</p>
         <Anchor
           href={`/search/tv/${query}`}
           className="text-base font-bold text-yellow-400 md:text-base"
