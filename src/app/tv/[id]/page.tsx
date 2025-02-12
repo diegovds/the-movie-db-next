@@ -51,7 +51,7 @@ const MoviePage = async ({ params }: Props) => {
       <InfoPage serie={data} />
       <div className="m-6 flex flex-col md:flex-row">
         <div className="md:flex-[2]">
-          <h2 className="mb-3 text-balance text-center text-2xl font-bold md:text-wrap md:text-left md:text-3xl">
+          <h2 className="mb-3 text-balance text-center text-2xl font-bold text-gray-100 md:text-wrap md:text-left md:text-3xl">
             Elenco principal
           </h2>
           <GridColumns className="md:grid-cols-[repeat(auto-fill,_minmax(11.40rem,_1fr))]">
@@ -69,9 +69,9 @@ const MoviePage = async ({ params }: Props) => {
           />
           <div className="flex flex-col items-center md:items-start">
             <TagH2 className="mt-6 md:mt-3">Título original</TagH2>
-            <p className="text-center">{data.original_name}</p>
+            <p className="text-center text-gray-100">{data.original_name}</p>
             <TagH2>Situação</TagH2>
-            <p>{StatusTvToBr(data.status)}</p>
+            <p className="text-gray-100">{StatusTvToBr(data.status)}</p>
             <TagH2>Emissora</TagH2>
             {data.networks[0] && (
               <Image
@@ -84,7 +84,7 @@ const MoviePage = async ({ params }: Props) => {
               />
             )}
             <TagH2>Tipo</TagH2>
-            <p>{TypeTvToBr(data.type)}</p>
+            <p className="text-gray-100">{TypeTvToBr(data.type)}</p>
           </div>
           <div>
             <TagH2 className="mb-2 text-center md:text-left">
