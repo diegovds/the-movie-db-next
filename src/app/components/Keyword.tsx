@@ -6,7 +6,7 @@ type KeywordProps = HTMLAttributes<HTMLParagraphElement>
 const Keyword = ({ children, className, ...props }: KeywordProps) => {
   return (
     <p
-      className={cn('rounded-md bg-slate-300 p-1 text-slate-500', className)}
+      className={cn('rounded-md bg-[#131313] p-1 text-gray-100', className)}
       {...props}
     >
       {children}
