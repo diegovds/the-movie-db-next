@@ -37,17 +37,38 @@ const Navbar = () => {
 
   return (
     <nav className="flex flex-col justify-between bg-[#131313] px-6 py-1 md:flex-row md:py-2">
-      <div className="flex justify-between">
-        <Link className="flex items-center" href={`/`}>
-          <Image src={logo} width={40} alt="Logo" />
-        </Link>
+      <div className="flex flex-col md:flex-row md:gap-6">
+        <div className="flex justify-between">
+          <Link className="flex items-center" href={`/`}>
+            <Image src={logo} width={40} alt="Logo" />
+          </Link>
 
-        <div className="text-gray-300 md:hidden">
-          <Hamburger size={20} toggled={isOpen} toggle={setOpen} />
+          <div className="text-gray-300 md:hidden">
+            <Hamburger size={20} toggled={isOpen} toggle={setOpen} />
+          </div>
         </div>
+        <ul
+          className={`flex items-center gap-3 ${isOpen ? 'flex-col justify-center' : 'hidden flex-row justify-start md:flex'}`}
+        >
+          <li
+            className={`${pathname === '/' ? 'bg-gray-300' : 'text-gray-300'} rounded-lg p-1 transition-opacity hover:opacity-85`}
+          >
+            <Link href={`/`}>Filmes</Link>
+          </li>
+          <li
+            className={`${pathname === '/tv' ? 'bg-gray-300' : 'text-gray-300'} rounded-lg p-1 transition-opacity hover:opacity-85`}
+          >
+            <Link href={`/tv`}>Séries</Link>
+          </li>
+          <li
+            className={`${pathname === '/person' ? 'bg-gray-300' : 'text-gray-300'} rounded-lg p-1 transition-opacity hover:opacity-85`}
+          >
+            <Link href={`/person`}>Artistas</Link>
+          </li>
+        </ul>
       </div>
       <form
-        className={`gap-2 ${isOpen ? 'flex justify-center pb-3' : 'hidden md:flex'}`}
+        className={`flex gap-2 ${isOpen ? 'mb-4 mt-3 justify-center' : 'hidden justify-start md:flex'}`}
         onSubmit={handleSubmit(onSubmit)}
       >
         <input
@@ -60,25 +81,6 @@ const Navbar = () => {
           <IoMdSearch className="h-full w-full rounded-md bg-gray-300 px-1 transition-opacity hover:opacity-85" />
         </button>
       </form>
-      <ul
-        className={`flex items-center gap-3 ${isOpen ? 'flex-col pb-3' : 'hidden flex-row md:flex'}`}
-      >
-        <li
-          className={`${pathname === '/' ? 'bg-gray-300' : 'text-gray-300'} rounded-lg p-1 transition-opacity hover:opacity-85`}
-        >
-          <Link href={`/`}>Filmes</Link>
-        </li>
-        <li
-          className={`${pathname === '/tv' ? 'bg-gray-300' : 'text-gray-300'} rounded-lg p-1 transition-opacity hover:opacity-85`}
-        >
-          <Link href={`/tv`}>Séries</Link>
-        </li>
-        <li
-          className={`${pathname === '/person' ? 'bg-gray-300' : 'text-gray-300'} rounded-lg p-1 transition-opacity hover:opacity-85`}
-        >
-          <Link href={`/person`}>Artistas</Link>
-        </li>
-      </ul>
     </nav>
   )
 }
