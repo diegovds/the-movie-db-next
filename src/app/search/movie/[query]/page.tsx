@@ -50,7 +50,7 @@ const SearchMoviePage = async ({ params, searchParams }: Props) => {
           Séries
         </Anchor>
       </div>
-      <GridColumns className="px-0">
+      <GridColumns className="px-0" page={true}>
         {data.results.map((movie) => (
           <InfoCard key={movie.id} movie={movie} />
         ))}

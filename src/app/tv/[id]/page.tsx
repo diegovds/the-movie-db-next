@@ -54,7 +54,7 @@ const MoviePage = async ({ params }: Props) => {
           <h2 className="mb-3 text-balance text-center text-2xl font-bold text-gray-100 md:text-wrap md:text-left md:text-3xl">
             Elenco principal
           </h2>
-          <GridColumns className="md:grid-cols-[repeat(auto-fill,_minmax(11.40rem,_1fr))]">
+          <GridColumns page={false}>
             {data.credits.cast.slice(0, 8).map((person) => (
               <InfoCard key={person.id} person={person} />
             ))}
@@ -100,7 +100,7 @@ const MoviePage = async ({ params }: Props) => {
       </div>
       <div className="m-6 mb-0">
         <TagH2 className="mb-3">Recomendações</TagH2>
-        <GridColumns>
+        <GridColumns page={false}>
           {data.recommendations.results.slice(0, 10).map((recommendation) => (
             <InfoCard key={recommendation.id} serie={recommendation} />
           ))}

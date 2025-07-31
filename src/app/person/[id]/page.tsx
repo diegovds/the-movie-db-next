@@ -143,7 +143,7 @@ const PersonPage = async ({ params }: Props) => {
         <h2 className="mb-3 mt-10 text-center text-2xl font-bold md:text-start md:text-3xl">
           Conhecido(a) por
         </h2>
-        <GridColumns className="md:grid-cols-[repeat(auto-fill,_minmax(11.40rem,_1fr))]">
+        <GridColumns page={false}>
           {data.combined_credits.cast.slice(0, 8).map((movie) => (
             <InfoCard key={movie.id} movie={movie} />
           ))}

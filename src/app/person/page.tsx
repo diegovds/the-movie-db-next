@@ -31,7 +31,7 @@ const PersonPage = async ({ searchParams }: Props) => {
   return (
     <div className="w-full">
       <TagH2 className="mb-3 ml-6 mt-0">Artistas populares:</TagH2>
-      <GridColumns className="px-6">
+      <GridColumns className="px-6" page={true}>
         {data.results.map((person) => (
           <InfoCard key={person.id} person={person} />
         ))}
