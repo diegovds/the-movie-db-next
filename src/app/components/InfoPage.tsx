@@ -45,8 +45,8 @@ const InfoPage = ({ movie, serie }: InfoPageProps) => {
             </div>
           )}
         </div>
-        <div className="flex flex-col items-center pt-6 text-gray-100 md:flex-1 lg:items-start md:pl-6 md:pt-0 lg:flex-[2]">
-          <h2 className="mb-3 text-balance text-center text-3xl font-bold md:text-wrap lg:text-left md:text-4xl">
+        <div className="flex flex-col items-center pt-6 text-gray-100 md:flex-1 md:pl-6 md:pt-0 lg:flex-[2] lg:items-start">
+          <h2 className="mb-3 text-balance text-center text-3xl font-bold md:text-wrap md:text-4xl lg:text-left">
             {movie ? movie.title : serie?.name}
           </h2>
           <div className="flex flex-col items-center gap-2 text-center text-base lg:flex-row">
