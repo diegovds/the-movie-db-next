@@ -46,10 +46,10 @@ const InfoPage = ({ movie, serie }: InfoPageProps) => {
           )}
         </div>
         <div className="flex flex-col items-center pt-6 text-gray-100 md:flex-1 md:pl-6 md:pt-0 lg:flex-[2] lg:items-start">
-          <h2 className="mb-3 text-balance text-center text-3xl font-bold md:text-wrap md:text-4xl lg:text-left">
+          <h2 className="mb-3 text-balance text-center text-2xl font-bold md:text-wrap md:text-3xl lg:text-left">
             {movie ? movie.title : serie?.name}
           </h2>
-          <div className="flex flex-col items-center gap-2 text-center text-base lg:flex-row">
+          <div className="flex flex-col items-center gap-2 text-center text-sm lg:flex-row">
             <p>
               {dateFormatting(
                 movie ? movie.release_date : serie?.first_air_date,
@@ -72,19 +72,19 @@ const InfoPage = ({ movie, serie }: InfoPageProps) => {
           )}
           {movie && (
             <h3
-              className={`mb-3 text-3xl font-bold md:text-4xl ${movie.videos.results.length < 1 ? 'mt-3' : 'mt-0'}`}
+              className={`mb-3 text-2xl font-bold md:text-3xl ${movie.videos.results.length < 1 ? 'mt-3' : 'mt-0'}`}
             >
               Sinopse
             </h3>
           )}
           {serie && (
             <h3
-              className={`mb-3 text-3xl font-bold md:text-4xl ${serie.videos.results.length < 1 ? 'mt-3' : 'mt-0'}`}
+              className={`mb-3 text-2xl font-bold md:text-3xl ${serie.videos.results.length < 1 ? 'mt-3' : 'mt-0'}`}
             >
               Sinopse
             </h3>
           )}
-          <p className="text-center text-base lg:text-left">
+          <p className="text-center text-sm lg:text-left">
             {movie ? movie.overview : serie?.overview}
           </p>
         </div>
