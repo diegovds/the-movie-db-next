@@ -19,7 +19,7 @@ const InfoPage = ({ movie, serie }: InfoPageProps) => {
           background: `linear-gradient(to right, rgb(16, 14, 14) 150px, rgba(16, 14, 14, 0.84) 100%), url(https://image.tmdb.org/t/p/original${movie ? movie.backdrop_path : serie?.backdrop_path}) no-repeat center/cover`,
         }}
       >
-        <div className="relative h-[500px] overflow-hidden rounded-lg md:h-[600px] md:flex-1">
+        <div className="relative h-[500px] flex-1 overflow-hidden rounded-lg md:h-[600px]">
           {movie?.poster_path || serie?.poster_path ? (
             <>
               <Image
@@ -45,21 +45,21 @@ const InfoPage = ({ movie, serie }: InfoPageProps) => {
             </div>
           )}
         </div>
-        <div className="flex flex-col items-center pt-6 text-gray-100 md:flex-[2] md:items-start md:pl-6 md:pt-0">
-          <h2 className="mb-3 text-balance text-center text-3xl font-bold md:text-wrap md:text-left md:text-4xl">
+        <div className="flex flex-col items-center pt-6 text-gray-100 md:flex-1 lg:items-start md:pl-6 md:pt-0 lg:flex-[2]">
+          <h2 className="mb-3 text-balance text-center text-3xl font-bold md:text-wrap lg:text-left md:text-4xl">
             {movie ? movie.title : serie?.name}
           </h2>
-          <div className="flex flex-col items-center gap-2 text-center text-base md:flex-row">
+          <div className="flex flex-col items-center gap-2 text-center text-base lg:flex-row">
             <p>
               {dateFormatting(
                 movie ? movie.release_date : serie?.first_air_date,
               )}
             </p>
-            <div className="mx-0 my-auto hidden h-[6px] w-[6px] rounded-[999px] bg-gray-100 md:block" />
+            <div className="mx-0 my-auto hidden h-[6px] w-[6px] rounded-[999px] bg-gray-100 lg:block" />
             <p>{genresList(movie ? movie.genres : serie?.genres)}</p>
             {!serie && movie && (
               <>
-                <div className="mx-0 my-auto hidden h-[6px] w-[6px] rounded-[999px] bg-gray-100 md:block" />
+                <div className="mx-0 my-auto hidden h-[6px] w-[6px] rounded-[999px] bg-gray-100 lg:block" />
                 <p>{runtime(movie.runtime)}</p>
               </>
             )}
@@ -84,7 +84,7 @@ const InfoPage = ({ movie, serie }: InfoPageProps) => {
               Sinopse
             </h3>
           )}
-          <p className="text-center text-base md:text-left">
+          <p className="text-center text-base lg:text-left">
             {movie ? movie.overview : serie?.overview}
           </p>
         </div>
