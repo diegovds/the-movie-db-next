@@ -50,7 +50,7 @@ const PersonPage = async ({ params }: Props) => {
 
   return (
     <div className="flex w-full flex-col px-6 text-gray-100 md:flex-row">
-      <div className="md:flex-1">
+      <div className="flex-1">
         <div className="relative h-[500px] overflow-hidden rounded-lg md:h-[600px]">
           {data.profile_path ? (
             <Image
@@ -132,7 +132,7 @@ const PersonPage = async ({ params }: Props) => {
           ))}
         </div>
       </div>
-      <div className="pt-6 md:flex-[2] md:pl-6 md:pt-0">
+      <div className="pt-6 md:flex-1 md:pl-6 md:pt-0 lg:flex-[2]">
         <h2 className="mb-3 hidden text-center text-3xl font-bold md:block md:text-start md:text-4xl">
           {data.name}
         </h2>
