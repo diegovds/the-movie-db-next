@@ -14,7 +14,7 @@ const GridColumns = ({
   return (
     <div
       className={cn(
-        `mx-auto my-0 grid ${page ? 'grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-5 lg:gap-8' : 'grid-cols-2 gap-4 lg:grid-cols-4'}`,
+        `mx-auto my-0 grid gap-4 md:gap-6 ${page ? 'grid-cols-2 md:grid-cols-3 lg:grid-cols-5' : 'grid-cols-2 lg:grid-cols-4'}`,
         className,
       )}
       {...props}
