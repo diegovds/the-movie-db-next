@@ -84,7 +84,7 @@ const InfoPage = ({ movie, serie }: InfoPageProps) => {
               Sinopse
             </h3>
           )}
-          <p className="text-center text-sm lg:text-left">
+          <p className="text-center text-sm leading-relaxed tracking-wide lg:text-left">
             {movie ? movie.overview : serie?.overview}
           </p>
         </div>
