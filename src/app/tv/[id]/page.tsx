@@ -69,9 +69,11 @@ const MoviePage = async ({ params }: Props) => {
           />
           <div className="flex flex-col items-center md:items-start">
             <TagH2 className="mt-6 md:mt-3">Título original</TagH2>
-            <p className="text-center text-gray-100">{data.original_name}</p>
+            <p className="text-center text-sm text-gray-100">
+              {data.original_name}
+            </p>
             <TagH2>Situação</TagH2>
-            <p className="text-gray-100">{StatusTvToBr(data.status)}</p>
+            <p className="text-sm text-gray-100">{StatusTvToBr(data.status)}</p>
             <TagH2>Emissora</TagH2>
             {data.networks[0] && (
               <Image
@@ -84,7 +86,7 @@ const MoviePage = async ({ params }: Props) => {
               />
             )}
             <TagH2>Tipo</TagH2>
-            <p className="text-gray-100">{TypeTvToBr(data.type)}</p>
+            <p className="text-sm text-gray-100">{TypeTvToBr(data.type)}</p>
           </div>
           <div>
             <TagH2 className="mb-2 text-center md:text-left">
