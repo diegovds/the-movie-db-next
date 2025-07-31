@@ -12,11 +12,19 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'The Movie BD NextJS',
-  description: '.........',
+  title: {
+    default: 'The Movie BD',
+    template: '%s | The Movie BD',
+  },
+  description:
+    'The Movie BD é uma plataforma com um catálogo de filmes, séries e artistas.',
   openGraph: {
-    title: 'The Movie BD NextJS',
-    description: '.........',
+    title: {
+      default: 'The Movie BD',
+      template: '%s | The Movie BD',
+    },
+    description:
+      'The Movie BD é uma plataforma com um catálogo de filmes, séries e artistas.',
     images: [''],
   },
   robots: {

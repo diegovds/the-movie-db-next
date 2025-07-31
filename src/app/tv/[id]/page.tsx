@@ -22,10 +22,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data: Serie = await response.json()
 
   return {
-    title: `The Movie BD NextJS - ${data.name}`,
+    title: `${data.name}`,
     description: `${data.overview}`,
     openGraph: {
-      title: `The Movie BD NextJS - ${data.name}`,
+      title: `${data.name}`,
       description: `${data.overview}`,
       images: [`https://image.tmdb.org/t/p/w500${data.poster_path}`],
     },

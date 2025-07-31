@@ -24,10 +24,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data: Person = await response.json()
 
   return {
-    title: `The Movie BD NextJS - ${data.name}`,
+    title: `${data.name}`,
     description: `${data.biography}`,
     openGraph: {
-      title: `The Movie BD NextJS - ${data.name}`,
+      title: `${data.name}`,
       description: `${data.biography}`,
       images: [`https://image.tmdb.org/t/p/w500${data.profile_path}`],
     },
