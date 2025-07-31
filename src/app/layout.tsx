@@ -44,10 +44,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${poppins.className} bg-[#272727]`}>
-      <body className="flex min-h-dvh flex-col antialiased">
-        <Navbar />
-        <main className="my-6 flex flex-1">{children}</main>
-        <Footer />
+      <body className="antialiased">
+        <div className="flex min-h-dvh flex-col gap-6">
+          <Navbar />
+          <main className="container mx-auto my-6 flex flex-1">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   )
