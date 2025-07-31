@@ -1,6 +1,7 @@
 import GridColumns from '@/app/components/GridColumns'
 import InfoCard from '@/app/components/InfoCard'
 import SocialMedia from '@/app/components/SocialMedia'
+import TagH2 from '@/app/components/TagH2'
 import { Person } from '@/types/Persons'
 import {
   GetDepartmentPerson,
@@ -73,28 +74,24 @@ const PersonPage = async ({ params }: Props) => {
           x={data.external_ids.twitter_id}
           imdb={data.external_ids.imdb_id}
         />
-        <h2 className="mb-6 block text-center text-3xl font-bold md:hidden md:text-start md:text-4xl">
+        <h2 className="mb-6 block text-center text-2xl font-bold md:hidden md:text-start md:text-3xl">
           {data.name}
         </h2>
         <h2 className="mb-3 text-center text-2xl font-bold md:text-start md:text-3xl">
           Informações pessoais
         </h2>
-        <h2 className="mb-1 text-center text-xl font-bold md:text-start md:text-2xl">
+        <TagH2 className="mb-1 text-center md:text-start">
           Conhecido(a) por
-        </h2>
-        <p className="mb-3 text-center text-base md:text-left">
+        </TagH2>
+        <p className="mb-3 text-center text-sm md:text-left">
           {GetDepartmentPerson(data.known_for_department)}
         </p>
-        <h2 className="mb-1 text-center text-xl font-bold md:text-start md:text-2xl">
-          Gênero
-        </h2>
-        <p className="mb-3 text-center text-base md:text-left">
+        <TagH2 className="mb-1 text-center md:text-start">Gênero</TagH2>
+        <p className="mb-3 text-center text-sm md:text-left">
           {GetGenderPerson(data.gender)}
         </p>
-        <h2 className="mb-1 text-center text-xl font-bold md:text-start md:text-2xl">
-          Nascimento
-        </h2>
-        <p className="mb-3 text-center text-base md:text-left">
+        <TagH2 className="mb-1 text-center md:text-start">Nascimento</TagH2>
+        <p className="mb-3 text-center text-sm md:text-left">
           {data.deathday === null ? (
             <>
               {PersonDateFormatting(data.birthday)} (
@@ -106,40 +103,39 @@ const PersonPage = async ({ params }: Props) => {
         </p>
         {data.deathday !== null && (
           <>
-            <h2 className="mb-1 text-center text-xl font-bold md:text-start md:text-2xl">
+            <TagH2 className="mb-1 text-center md:text-start">
               Falecimento
-            </h2>
-            <p className="mb-3 text-center text-base md:text-left">
+            </TagH2>
+            <p className="mb-3 text-center text-sm md:text-left">
               {PersonDateFormatting(data.deathday)} (
               {GetPersonAge(data.birthday, data.deathday)} anos)
             </p>
           </>
         )}
-        <h2 className="mb-1 text-center text-xl font-bold md:text-start md:text-2xl">
+        <TagH2 className="mb-1 text-center md:text-start">
           Local de nascimento
-        </h2>
-        <p className="mb-3 text-center text-base md:text-left">
+        </TagH2>
+        <p className="mb-3 text-center text-sm md:text-left">
           {data.place_of_birth}
         </p>
-        <h2 className="mb-1 text-center text-xl font-bold md:text-start md:text-2xl">
+        <TagH2 className="mb-1 text-center md:text-start">
           Também conhecido(a) como
-        </h2>
+        </TagH2>
         <div className="flex flex-col gap-1">
           {data.also_known_as.map((name, index) => (
-            <p key={index} className="text-center text-base md:text-left">
+            <p key={index} className="text-center text-sm md:text-left">
               {name}
             </p>
           ))}
         </div>
       </div>
       <div className="pt-6 md:flex-1 md:pl-6 md:pt-0 lg:flex-[2]">
-        <h2 className="mb-3 hidden text-center text-3xl font-bold md:block md:text-start md:text-4xl">
+        <h2 className="mb-3 hidden text-center text-2xl font-bold md:block md:text-start md:text-3xl">
           {data.name}
         </h2>
-        <h2 className="mb-3 text-center text-2xl font-bold md:text-start md:text-3xl">
-          Biografia
-        </h2>
-        <p className="text-center text-base md:text-left">{data.biography}</p>
+        <p className="text-center text-sm leading-relaxed tracking-wide md:text-left">
+          {data.biography}
+        </p>
         <h2 className="mb-3 mt-10 text-center text-2xl font-bold md:text-start md:text-3xl">
           Conhecido(a) por
         </h2>
