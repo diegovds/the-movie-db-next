@@ -68,13 +68,21 @@ const MoviePage = async ({ params }: Props) => {
           />
           <div className="flex flex-col items-center md:items-start">
             <TagH2 className="mt-6 md:mt-3">Título original</TagH2>
-            <p className="text-center text-gray-100">{data.original_title}</p>
+            <p className="text-center text-sm text-gray-100">
+              {data.original_title}
+            </p>
             <TagH2>Situação</TagH2>
-            <p className="text-gray-100">{StatusMovieToBr(data.status)}</p>
+            <p className="text-sm text-gray-100">
+              {StatusMovieToBr(data.status)}
+            </p>
             <TagH2>Orçamento</TagH2>
-            <p className="text-gray-100">{FormatterDollar(data.budget)}</p>
+            <p className="text-sm text-gray-100">
+              {FormatterDollar(data.budget)}
+            </p>
             <TagH2>Receita</TagH2>
-            <p className="text-gray-100">{FormatterDollar(data.revenue)}</p>
+            <p className="text-sm text-gray-100">
+              {FormatterDollar(data.revenue)}
+            </p>
           </div>
           <div>
             <TagH2 className="mb-2 text-center md:text-left">
@@ -89,7 +97,9 @@ const MoviePage = async ({ params }: Props) => {
         </div>
       </div>
       <div className="m-6 mb-0">
-        <TagH2 className="mb-3">Recomendações</TagH2>
+        <h2 className="mb-3 text-balance text-center text-2xl font-bold text-gray-100 md:text-wrap md:text-left md:text-3xl">
+          Recomendações
+        </h2>
         <GridColumns page={false} className="md:grid-cols-3 lg:grid-cols-5">
           {data.recommendations.results.slice(0, 10).map((recommendation) => (
             <InfoCard key={recommendation.id} movie={recommendation} />
