@@ -5,12 +5,15 @@ type KeywordProps = HTMLAttributes<HTMLParagraphElement>
 
 const Keyword = ({ children, className, ...props }: KeywordProps) => {
   return (
-    <p
-      className={cn('rounded-md bg-[#131313] p-1 text-gray-100', className)}
+    <span
+      className={cn(
+        'rounded-md bg-[#131313] px-2 py-1 text-xs text-gray-100',
+        className,
+      )}
       {...props}
     >
       {children}
-    </p>
+    </span>
   )
 }
 
