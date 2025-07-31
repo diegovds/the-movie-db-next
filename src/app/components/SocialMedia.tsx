@@ -30,7 +30,7 @@ const SocialMedia = ({
           target="_blank"
           rel="noreferrer"
         >
-          <FaFacebook className="text-gray-100" />
+          <FaFacebook className="text-3xl text-gray-100" />
         </Anchor>
       )}
       {insta !== null && insta !== '' && (
@@ -39,12 +39,12 @@ const SocialMedia = ({
           target="_blank"
           rel="noreferrer"
         >
-          <FaInstagram className="text-gray-100" />
+          <FaInstagram className="text-3xl text-gray-100" />
         </Anchor>
       )}
       {x !== null && x !== '' && (
         <Anchor href={`https://x.com/${x}`} target="_blank" rel="noreferrer">
-          <FaSquareXTwitter className="text-gray-100" />
+          <FaSquareXTwitter className="text-3xl text-gray-100" />
         </Anchor>
       )}
       {imdb !== null && imdb !== '' && (
@@ -53,7 +53,7 @@ const SocialMedia = ({
           target="_blank"
           rel="noreferrer"
         >
-          <FaImdb className="text-gray-100" />
+          <FaImdb className="text-3xl text-gray-100" />
         </Anchor>
       )}
     </div>
