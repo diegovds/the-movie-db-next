@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer className="flex flex-col items-center bg-[#131313] p-2 text-gray-300">
-      <h3 className="mb-1 text-sm">
+      <h3 className="mb-1 text-xs">
         Desenvolvido por{' '}
         <a
           href="https://portfoliodiegoviana.vercel.app/"
