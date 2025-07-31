@@ -19,7 +19,7 @@ const InfoPage = ({ movie, serie }: InfoPageProps) => {
           background: `linear-gradient(to right, rgb(16, 14, 14) 150px, rgba(16, 14, 14, 0.84) 100%), url(https://image.tmdb.org/t/p/original${movie ? movie.backdrop_path : serie?.backdrop_path}) no-repeat center/cover`,
         }}
       >
-        <div className="relative h-[500px] flex-1 overflow-hidden rounded-lg md:h-[600px]">
+        <div className="relative h-[500px] md:flex-1 overflow-hidden rounded-lg md:h-[600px]">
           {movie?.poster_path || serie?.poster_path ? (
             <>
               <Image
