@@ -37,20 +37,19 @@ const Navbar = () => {
 
   return (
     <nav className="bg-[#131313]">
-      <div className="container mx-auto flex flex-col justify-between px-3 py-1 md:flex-row md:py-3">
-        <div className="flex flex-col md:flex-row md:gap-6">
-          <div className="flex justify-between">
-            <Link className="flex items-center" href={`/`}>
-              <Image src={logo} width={40} alt="Logo" />
-            </Link>
-
-            <div className="text-gray-300 md:hidden">
-              <Hamburger size={20} toggled={isOpen} toggle={setOpen} />
-            </div>
+      <div className="container mx-auto flex flex-col justify-between px-3 py-1 md:flex-row md:gap-4 md:py-3">
+        <div className="flex justify-between">
+          <Link className="flex items-center" href={`/`}>
+            <Image src={logo} width={40} alt="Logo" />
+          </Link>
+          <div className="text-gray-300 md:hidden">
+            <Hamburger size={20} toggled={isOpen} toggle={setOpen} />
           </div>
-          <ul
-            className={`flex items-center gap-3 ${isOpen ? 'flex-col justify-center' : 'hidden flex-row justify-start md:flex'}`}
-          >
+        </div>
+        <div
+          className={`flex flex-1 flex-col-reverse items-center justify-between gap-4 transition-all duration-300 ease-in-out md:flex-row md:items-start md:gap-0 ${isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}
+        >
+          <ul className={`flex flex-col items-center gap-3 md:flex-row`}>
             <li
               className={`${pathname === '/' ? 'bg-gray-300' : 'text-gray-300'} rounded-lg p-1 transition-opacity hover:opacity-85`}
             >
@@ -67,21 +66,18 @@ const Navbar = () => {
               <Link href={`/person`}>Artistas</Link>
             </li>
           </ul>
+          <form className={`flex gap-2`} onSubmit={handleSubmit(onSubmit)}>
+            <input
+              type="text"
+              placeholder="Filme, série ou artista"
+              className="w-60 rounded-lg bg-gray-300 p-1 text-sm outline-none placeholder:text-gray-400"
+              {...register('query', { required: true })}
+            />
+            <button type="submit" className="w-8">
+              <IoMdSearch className="h-full w-full rounded-md bg-gray-300 px-1 transition-opacity hover:opacity-85" />
+            </button>
+          </form>
         </div>
-        <form
-          className={`flex gap-2 ${isOpen ? 'mb-4 mt-3 justify-center' : 'hidden justify-start md:flex'}`}
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <input
-            type="text"
-            placeholder="Filme, série ou artista"
-            className="w-60 rounded-lg bg-gray-300 p-1 text-sm outline-none placeholder:text-gray-400"
-            {...register('query', { required: true })}
-          />
-          <button type="submit" className="w-8">
-            <IoMdSearch className="h-full w-full rounded-md bg-gray-300 px-1 transition-opacity hover:opacity-85" />
-          </button>
-        </form>
       </div>
     </nav>
   )
