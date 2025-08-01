@@ -32,20 +32,20 @@ const SearchPersonPage = async ({ params, searchParams }: Props) => {
   const data: ResponseProps = await response.json()
 
   return (
-    <div className="mx-6 w-full">
+    <div className="w-full">
       <TagH2 className="ml-0 mt-0">Pesquisa por {query} em artistas:</TagH2>
       <div className="my-3 flex gap-6">
-        <p className="text-gray-100">Pesquise em </p>
+        <p className="text-sm text-gray-100">Pesquise em </p>
         <Anchor
           href={`/search/movie/${query}`}
-          className="text-base font-bold text-blue-400 md:text-base"
+          className="text-sm font-bold text-blue-400 md:text-sm"
         >
           Filmes
         </Anchor>
-        <p className="text-gray-100">ou</p>
+        <p className="text-sm text-gray-100">ou</p>
         <Anchor
           href={`/search/tv/${query}`}
-          className="text-base font-bold text-yellow-400 md:text-base"
+          className="text-sm font-bold text-yellow-400 md:text-sm"
         >
           Séries
         </Anchor>
