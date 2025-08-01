@@ -37,7 +37,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-[#131313]">
-      <div className="container mx-auto flex flex-col justify-between px-6 py-1 md:flex-row md:py-2">
+      <div className="container mx-auto flex flex-col justify-between px-3 py-1 md:flex-row md:py-3">
         <div className="flex flex-col md:flex-row md:gap-6">
           <div className="flex justify-between">
             <Link className="flex items-center" href={`/`}>
