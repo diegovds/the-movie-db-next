@@ -23,18 +23,18 @@ const ModalDiv = ({ movie, serie }: ModalDivProps) => {
     <div className="my-6">
       <button
         onClick={() => setIsOpen(true)}
-        className="flex items-center gap-3 text-lg font-bold transition-opacity hover:opacity-80"
+        className="flex items-center gap-3 text-lg font-semibold transition-opacity hover:opacity-80"
       >
         <BsPlayFill size={40} /> Reproduzir trailer
       </button>
       {isOpen && (
         <Modal closeModal={handleIsOpen}>
-          <div className="mb-2 flex justify-between">
-            <h3 className="text-xl font-bold text-gray-100 md:text-4xl">
+          <div className="mb-3 flex justify-between">
+            <h3 className="text-2xl font-bold text-gray-100 md:text-3xl">
               Trailer
             </h3>
             <button onClick={() => handleIsOpen()}>
-              <IoClose className="rounded-full bg-gray-100 text-2xl text-black transition-opacity hover:opacity-85 md:text-4xl" />
+              <IoClose className="rounded-full bg-gray-100 text-2xl text-black transition-opacity hover:opacity-85 md:text-3xl" />
             </button>
           </div>
           {movie && (
