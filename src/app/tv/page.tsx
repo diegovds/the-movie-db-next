@@ -30,8 +30,10 @@ const TvPage = async ({ searchParams }: Props) => {
 
   return (
     <div className="w-full">
-      <TagH2 className="mb-3 ml-6 mt-0">Séries populares:</TagH2>
-      <GridColumns className="px-6" page={true}>
+      <TagH2 className="mb-4 mt-0 text-center md:text-left">
+        Séries populares:
+      </TagH2>
+      <GridColumns page={true}>
         {data.results.map((serie) => (
           <InfoCard key={serie.id} serie={serie} />
         ))}
