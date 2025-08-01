@@ -47,7 +47,7 @@ const Navbar = () => {
           </div>
         </div>
         <div
-          className={`flex flex-1 flex-col-reverse items-center justify-between gap-4 transition-all duration-300 ease-in-out md:flex-row md:items-start md:gap-0 ${isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}
+          className={`flex flex-1 flex-col-reverse items-center justify-between gap-4 transition-all duration-300 ease-in-out md:flex-row md:items-start md:gap-0 ${isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0 md:opacity-100'}`}
         >
           <ul className={`flex flex-col items-center gap-3 md:flex-row`}>
             <li
