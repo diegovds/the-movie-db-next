@@ -50,7 +50,7 @@ const PersonPage = async ({ params }: Props) => {
   const data: Person = await response.json()
 
   return (
-    <div className="flex w-full flex-col px-6 text-gray-100 md:flex-row">
+    <div className="flex w-full flex-col text-gray-100 md:flex-row">
       <div className="flex-1">
         <div className="relative h-[500px] overflow-hidden rounded-lg md:h-[600px]">
           {data.profile_path ? (
@@ -136,7 +136,7 @@ const PersonPage = async ({ params }: Props) => {
         <p className="text-center text-sm leading-relaxed tracking-wide md:text-left">
           {data.biography}
         </p>
-        <h2 className="mb-3 mt-10 text-center text-2xl font-bold md:text-start md:text-3xl">
+        <h2 className="mb-4 mt-3 text-center text-2xl font-bold md:text-start md:text-3xl">
           Conhecido(a) por
         </h2>
         <GridColumns page={false}>
