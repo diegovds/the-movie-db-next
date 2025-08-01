@@ -48,7 +48,7 @@ const MoviePage = async ({ params }: Props) => {
   return (
     <div className="w-full flex-col">
       <InfoPage movie={data} />
-      <div className="m-6 flex flex-col md:flex-row">
+      <div className="my-3 flex flex-col md:flex-row">
         <div className="md:flex-[2]">
           <h2 className="mb-3 text-balance text-center text-2xl font-bold text-gray-100 md:text-wrap md:text-left md:text-3xl">
             Elenco principal
@@ -96,7 +96,7 @@ const MoviePage = async ({ params }: Props) => {
           </div>
         </div>
       </div>
-      <div className="m-6 mb-0">
+      <div className="my-3 mb-0">
         <h2 className="mb-3 text-balance text-center text-2xl font-bold text-gray-100 md:text-wrap md:text-left md:text-3xl">
           Recomendações
         </h2>
