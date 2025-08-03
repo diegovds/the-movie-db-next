@@ -43,41 +43,36 @@ const Pagination = ({
   const router = useRouter()
 
   useEffect(() => {
-    if (pageCount !== 1) {
-      if (serie && !pageChanged) {
-        router.push(`tv/?page=${pageCount}`)
-        setPageChanged(true)
-      }
-      if (person && !pageChanged) {
-        router.push(`person/?page=${pageCount}`)
-        setPageChanged(true)
-      }
-      if (movieSearch && query && !pageChanged) {
-        router.push(`/search/movie/${query}/?page=${pageCount}`)
-        setPageChanged(true)
-      }
-      if (serieSearch && query && !pageChanged) {
-        router.push(`/search/tv/${query}/?page=${pageCount}`)
-        setPageChanged(true)
-      }
-      if (personSearch && query && !pageChanged) {
-        router.push(`/search/person/${query}/?page=${pageCount}`)
-        setPageChanged(true)
-      }
-      if (!serie && !person && !movieSearch && !serieSearch && !personSearch) {
-        router.push(`/?page=${pageCount}`)
-      }
+    if (pageCount === 1 || pageChanged) return
+
+    let path = ''
+
+    if (serie) {
+      path = `tv/?page=${pageCount}`
+    } else if (person) {
+      path = `person/?page=${pageCount}`
+    } else if (movieSearch && query) {
+      path = `/search/movie/${query}/?page=${pageCount}`
+    } else if (serieSearch && query) {
+      path = `/search/tv/${query}/?page=${pageCount}`
+    } else if (personSearch && query) {
+      path = `/search/person/${query}/?page=${pageCount}`
+    } else {
+      path = `/?page=${pageCount}`
     }
+
+    router.push(path)
+    setPageChanged(true)
   }, [
-    router,
+    pageCount,
+    pageChanged,
     serie,
     person,
     movieSearch,
     serieSearch,
     personSearch,
     query,
-    pageChanged,
-    pageCount,
+    router,
   ])
 
   const handlePage = ({ operation }: HandlePageProps) => {
