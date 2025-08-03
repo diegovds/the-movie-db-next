@@ -51,7 +51,7 @@ export interface Movie {
   revenue: number
   status: string
   keywords: Keyword
-  recommendations: {
+  recommendations?: {
     results: Movie[]
   }
 }

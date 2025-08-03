@@ -101,9 +101,11 @@ const MoviePage = async ({ params }: Props) => {
           Recomendações
         </h2>
         <GridColumns page={false} className="md:grid-cols-3 lg:grid-cols-5">
-          {data.recommendations.results.slice(0, 10).map((recommendation) => (
-            <InfoCard key={recommendation.id} movie={recommendation} />
-          ))}
+          {data.recommendations?.results
+            .slice(0, 10)
+            .map((recommendation) => (
+              <InfoCard key={recommendation.id} movie={recommendation} />
+            ))}
         </GridColumns>
       </div>
     </div>
