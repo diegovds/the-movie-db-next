@@ -18,7 +18,7 @@ const TvPage = async ({ searchParams }: Props) => {
   const { page } = await searchParams
 
   const response = await fetch(
-    `https://api.themoviedb.org/3/discover/tv?${process.env.THE_MOVIE_DB}&include_adult=false&page=${page !== undefined && page > 0 ? page : 1}`,
+    `https://api.themoviedb.org/3/trending/tv/week?${process.env.THE_MOVIE_DB}&include_adult=false&page=${page !== undefined && page > 0 ? page : 1}`,
     {
       cache: 'no-store',
       next: {
