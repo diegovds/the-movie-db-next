@@ -7,6 +7,7 @@ import TagH2 from '@/app/components/TagH2'
 import { Movie } from '@/types/Movies'
 import { FormatterDollar, StatusMovieToBr } from '@/utils/functions'
 import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
 type Props = {
   params: Promise<{ id: string }>
@@ -44,6 +45,8 @@ const MoviePage = async ({ params }: Props) => {
     },
   )
   const data: Movie = await response.json()
+
+  if (!data.title) return notFound()
 
   return (
     <div className="w-full flex-col">

@@ -11,6 +11,7 @@ import {
 } from '@/utils/functions'
 import { Metadata } from 'next'
 import Image from 'next/image'
+import { notFound } from 'next/navigation'
 
 type Props = {
   params: Promise<{ id: string }>
@@ -48,6 +49,8 @@ const PersonPage = async ({ params }: Props) => {
     },
   )
   const data: Person = await response.json()
+
+  if (!data.name) return notFound()
 
   return (
     <div className="flex w-full flex-col text-gray-100 md:flex-row">

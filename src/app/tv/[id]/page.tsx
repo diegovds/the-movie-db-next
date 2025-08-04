@@ -8,6 +8,7 @@ import { Serie } from '@/types/Series'
 import { StatusTvToBr, TypeTvToBr } from '@/utils/functions'
 import { Metadata } from 'next'
 import Image from 'next/image'
+import { notFound } from 'next/navigation'
 
 type Props = {
   params: Promise<{ id: string }>
@@ -32,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-const MoviePage = async ({ params }: Props) => {
+const SeriePage = async ({ params }: Props) => {
   const { id } = await params
 
   const response = await fetch(
@@ -45,6 +46,8 @@ const MoviePage = async ({ params }: Props) => {
     },
   )
   const data: Serie = await response.json()
+
+  if (!data.name) return notFound()
 
   return (
     <div className="w-full flex-col">
@@ -112,4 +115,4 @@ const MoviePage = async ({ params }: Props) => {
   )
 }
 
-export default MoviePage
+export default SeriePage
