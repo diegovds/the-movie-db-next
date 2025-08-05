@@ -25,8 +25,8 @@ const InfoPage = ({ movie, serie }: InfoPageProps) => {
               <Image
                 src={
                   movie
-                    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                    : `https://image.tmdb.org/t/p/w500${serie?.poster_path}`
+                    ? `https://image.tmdb.org/t/p/w780${movie.poster_path}`
+                    : `https://image.tmdb.org/t/p/w780${serie?.poster_path}`
                 }
                 alt="poster"
                 priority

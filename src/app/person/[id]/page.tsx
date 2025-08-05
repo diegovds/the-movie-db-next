@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${data.name}`,
       description: `${data.biography}`,
-      images: [`https://image.tmdb.org/t/p/w500${data.profile_path}`],
+      images: [`https://image.tmdb.org/t/p/w780${data.profile_path}`],
     },
   }
 }
@@ -58,7 +58,7 @@ const PersonPage = async ({ params }: Props) => {
         <div className="relative h-[500px] overflow-hidden rounded-lg md:h-[600px]">
           {data.profile_path ? (
             <Image
-              src={`https://image.tmdb.org/t/p/w500${data.profile_path}`}
+              src={`https://image.tmdb.org/t/p/w780${data.profile_path}`}
               alt="poster"
               priority
               quality={100}

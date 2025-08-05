@@ -30,10 +30,10 @@ const InfoCard = ({ movie, serie, person }: InfoCardProps) => {
             <Image
               src={
                 movie
-                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                  ? `https://image.tmdb.org/t/p/w780${movie.poster_path}`
                   : serie
-                    ? `https://image.tmdb.org/t/p/w500${serie.poster_path}`
-                    : `https://image.tmdb.org/t/p/w500${person?.profile_path}`
+                    ? `https://image.tmdb.org/t/p/w780${serie.poster_path}`
+                    : `https://image.tmdb.org/t/p/w780${person?.profile_path}`
               }
               alt="poster"
               priority
