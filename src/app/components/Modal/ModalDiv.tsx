@@ -33,29 +33,29 @@ const ModalDiv = ({ movie, serie }: ModalDivProps) => {
       </button>
       {isOpen && (
         <Modal closeModal={handleIsOpen}>
-          <div className="border-b border-white/10 bg-[#111214]/95 px-4 py-4 sm:px-6">
-            <div className="flex items-start justify-between gap-4">
+          <div className="border-b border-white/10 bg-[#111214]/95 px-3 py-3 sm:px-6 sm:py-4">
+            <div className="flex items-center justify-between gap-3 sm:items-start sm:gap-4">
               <div className="min-w-0">
-                <p className="text-xs font-black uppercase tracking-[0.28em] text-[var(--gold)]">
+                <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[var(--gold)] sm:text-xs sm:tracking-[0.28em]">
                   Trailer oficial
                 </p>
-                <h3 className="mt-1 line-clamp-2 text-2xl font-black leading-tight text-white sm:text-3xl">
+                <h3 className="mt-1 line-clamp-1 text-lg font-black leading-tight text-white sm:line-clamp-2 sm:text-3xl">
                   {title}
                 </h3>
               </div>
               <button
                 onClick={() => handleIsOpen()}
                 aria-label="Fechar trailer"
-                className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/10 bg-white/[0.08] text-white transition-all hover:border-[var(--gold)] hover:bg-[var(--gold)] hover:text-black"
+                className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 bg-white/[0.08] text-white transition-all hover:border-[var(--gold)] hover:bg-[var(--gold)] hover:text-black sm:h-11 sm:w-11"
               >
                 <IoClose className="text-2xl" />
               </button>
             </div>
           </div>
 
-          <div className="bg-black p-2 sm:p-4">
-            <div className="relative overflow-hidden rounded-md border border-white/10 bg-black shadow-2xl">
-              <div className="absolute inset-x-0 top-0 z-10 h-12 bg-gradient-to-b from-black/55 to-transparent" />
+          <div className="bg-black p-0 sm:p-4">
+            <div className="relative overflow-hidden bg-black shadow-2xl sm:rounded-md sm:border sm:border-white/10">
+              <div className="pointer-events-none absolute inset-x-0 top-0 z-10 hidden h-12 bg-gradient-to-b from-black/55 to-transparent sm:block" />
               {videoKey && (
                 <iframe
                   width="100%"

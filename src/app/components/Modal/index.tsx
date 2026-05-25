@@ -37,7 +37,7 @@ const Modal = ({ children, closeModal }: ModalProps) => {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-[#050505]/90 p-3 backdrop-blur-xl sm:p-6"
+      className="bg-[#050505]/92 fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto p-0 backdrop-blur-xl sm:p-6"
       role="dialog"
       aria-modal="true"
     >
@@ -45,7 +45,7 @@ const Modal = ({ children, closeModal }: ModalProps) => {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-70" />
       <div
         ref={contentRef}
-        className="cinema-panel relative my-auto w-full max-w-6xl overflow-hidden rounded-lg p-0 shadow-[0_40px_120px_rgba(0,0,0,0.7)]"
+        className="cinema-panel relative my-auto max-h-[100dvh] w-full max-w-6xl overflow-hidden rounded-none border-x-0 p-0 shadow-[0_40px_120px_rgba(0,0,0,0.7)] sm:max-h-[calc(100dvh-3rem)] sm:rounded-lg sm:border-x"
       >
         {children}
       </div>
