@@ -7,7 +7,7 @@ const Anchor = ({ children, className, ...props }: AnchorProps) => {
   return (
     <a
       className={cn(
-        'h-fit text-3xl transition-opacity hover:opacity-80 md:text-4xl',
+        'h-fit text-3xl text-gray-100 transition-colors hover:text-[var(--gold)] md:text-4xl',
         className,
       )}
       {...props}

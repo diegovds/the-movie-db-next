@@ -1,14 +1,14 @@
 import type { Metadata, Viewport } from 'next'
-import { Poppins } from 'next/font/google'
+import { Bricolage_Grotesque as BricolageGrotesque } from 'next/font/google'
 
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import './globals.css'
 
-const poppins = Poppins({
+const bricolage = BricolageGrotesque({
   subsets: ['latin'],
   display: 'swap',
-  weight: '400',
+  variable: '--font-bricolage',
 })
 
 export const metadata: Metadata = {
@@ -51,11 +51,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className={`${poppins.className} bg-[#272727]`}>
+    <html
+      lang="pt-BR"
+      className={`${bricolage.className} ${bricolage.variable}`}
+    >
       <body className="antialiased">
         <div className="flex min-h-dvh flex-col">
           <Navbar />
-          <main className="container mx-auto my-5 flex flex-1 px-3">
+          <main className="container mx-auto flex flex-1 px-3 py-6 sm:px-4 lg:py-9">
             {children}
           </main>
           <Footer />

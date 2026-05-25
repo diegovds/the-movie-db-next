@@ -4,6 +4,8 @@ import InfoCard from '@/app/components/InfoCard'
 import Pagination from '@/app/components/Pagination'
 import TagH2 from '@/app/components/TagH2'
 import { Movie } from '@/types/Movies'
+import { fetchTmdb } from '@/utils/tmdb'
+import ApiState from '@/app/components/ApiState'
 
 interface ResponseProps {
   results: Movie[]
@@ -19,38 +21,38 @@ type Props = {
 const SearchMoviePage = async ({ params, searchParams }: Props) => {
   const { query } = await params
   const { page } = await searchParams
+  const decodedQuery = decodeURIComponent(query)
 
-  const response = await fetch(
+  const data = await fetchTmdb<ResponseProps>(
     `https://api.themoviedb.org/3/search/movie?${process.env.THE_MOVIE_DB}&include_adult=false&page=${page !== undefined && page > 0 ? page : 1}&query=${query}`,
-    {
-      cache: 'no-store',
-      next: {
-        revalidate: 0,
-      },
-    },
   )
-  const data: ResponseProps = await response.json()
+
+  if (!data) return <ApiState />
 
   return (
     <div className="w-full">
-      <TagH2 className="ml-0 mt-0">Pesquisa por {query} em filmes:</TagH2>
-      <div className="my-3 flex gap-6">
-        <p className="text-sm text-gray-100">Pesquise em </p>
-        <Anchor
-          href={`/search/person/${query}`}
-          className="text-sm font-bold text-green-500 md:text-sm"
-        >
-          Artistas
-        </Anchor>
-        <p className="text-sm text-gray-100">ou</p>
-        <Anchor
-          href={`/search/tv/${query}`}
-          className="text-sm font-bold text-yellow-400 md:text-sm"
-        >
-          Séries
-        </Anchor>
-      </div>
-      <GridColumns className="px-0" page={true}>
+      <section className="mb-6 border-b border-white/10 pb-5">
+        <TagH2 className="mt-0">Busca em filmes</TagH2>
+        <h1 className="mt-2 text-4xl font-black leading-none text-white md:text-6xl">
+          {decodedQuery}
+        </h1>
+        <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-gray-300">
+          <span>Pesquisar também em</span>
+          <Anchor
+            href={`/search/person/${query}`}
+            className="rounded-full bg-white/[0.07] px-3 py-1 text-sm font-black text-[var(--green)] md:text-sm"
+          >
+            Artistas
+          </Anchor>
+          <Anchor
+            href={`/search/tv/${query}`}
+            className="rounded-full bg-white/[0.07] px-3 py-1 text-sm font-black text-[var(--gold)] md:text-sm"
+          >
+            Séries
+          </Anchor>
+        </div>
+      </section>
+      <GridColumns page={true}>
         {data.results.map((movie) => (
           <InfoCard key={movie.id} movie={movie} />
         ))}

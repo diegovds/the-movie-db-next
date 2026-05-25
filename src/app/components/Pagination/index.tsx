@@ -93,8 +93,11 @@ const Pagination = ({
   }
 
   return (
-    <div className="mt-6 flex justify-center">
-      <button onClick={() => handlePage({ operation: 'sub' })}>
+    <div className="mt-8 flex flex-wrap justify-center gap-2">
+      <button
+        onClick={() => handlePage({ operation: 'sub' })}
+        aria-label="Páginas anteriores"
+      >
         <PaginationIcon>
           <FaAngleDoubleLeft />
         </PaginationIcon>
@@ -123,13 +126,24 @@ const Pagination = ({
                           : `/?page=${index + pageCount}`
               }
             >
-              <PaginationIcon>{index + pageCount}</PaginationIcon>
+              <PaginationIcon
+                className={
+                  index + pageCount === Number(page ?? 1)
+                    ? 'border-[var(--gold)] bg-[var(--gold)] text-black'
+                    : undefined
+                }
+              >
+                {index + pageCount}
+              </PaginationIcon>
             </Link>,
           )
         }
         return link
       })()}
-      <button onClick={() => handlePage({ operation: 'add' })}>
+      <button
+        onClick={() => handlePage({ operation: 'add' })}
+        aria-label="Próximas páginas"
+      >
         <PaginationIcon>
           <FaAngleDoubleRight />
         </PaginationIcon>

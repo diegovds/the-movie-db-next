@@ -21,7 +21,7 @@ const SocialMedia = ({
 }: SocialMediaProps) => {
   return (
     <div
-      className={cn('flex justify-center gap-6 md:justify-start', className)}
+      className={cn('flex justify-center gap-3 md:justify-start', className)}
       {...props}
     >
       {face !== null && face !== '' && (
@@ -29,8 +29,9 @@ const SocialMedia = ({
           href={`https://www.facebook.com/${face}`}
           target="_blank"
           rel="noreferrer"
+          className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.06] text-xl md:text-xl"
         >
-          <FaFacebook className="text-3xl text-gray-100" />
+          <FaFacebook />
         </Anchor>
       )}
       {insta !== null && insta !== '' && (
@@ -38,13 +39,19 @@ const SocialMedia = ({
           href={`https://www.instagram.com/${insta}`}
           target="_blank"
           rel="noreferrer"
+          className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.06] text-xl md:text-xl"
         >
-          <FaInstagram className="text-3xl text-gray-100" />
+          <FaInstagram />
         </Anchor>
       )}
       {x !== null && x !== '' && (
-        <Anchor href={`https://x.com/${x}`} target="_blank" rel="noreferrer">
-          <FaSquareXTwitter className="text-3xl text-gray-100" />
+        <Anchor
+          href={`https://x.com/${x}`}
+          target="_blank"
+          rel="noreferrer"
+          className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.06] text-xl md:text-xl"
+        >
+          <FaSquareXTwitter />
         </Anchor>
       )}
       {imdb !== null && imdb !== '' && (
@@ -52,8 +59,9 @@ const SocialMedia = ({
           href={`https://www.imdb.com/pt/title/${imdb}`}
           target="_blank"
           rel="noreferrer"
+          className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.06] text-xl md:text-xl"
         >
-          <FaImdb className="text-3xl text-gray-100" />
+          <FaImdb />
         </Anchor>
       )}
     </div>

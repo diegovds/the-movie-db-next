@@ -8,16 +8,19 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="flex w-full flex-col items-center justify-center">
-      <div className="rounded-md bg-[#131313] p-7 text-center">
-        <TagH2 className="mt-0">404 - Página não encontrada</TagH2>
-        <p className="mt-2 text-sm text-gray-300">
+    <div className="flex w-full items-center justify-center">
+      <div className="cinema-panel max-w-lg rounded-lg p-8 text-center">
+        <TagH2 className="mt-0">404</TagH2>
+        <h1 className="mt-2 text-4xl font-black text-white">
+          Página não encontrada
+        </h1>
+        <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
           Não conseguimos encontrar o recurso solicitado.
         </p>
 
         <Link
           href="/"
-          className="mt-6 inline-block rounded-md bg-blue-600 px-2 py-2 text-sm text-gray-100 transition-colors hover:bg-blue-700"
+          className="mt-6 inline-flex rounded-full bg-[var(--gold)] px-5 py-3 text-sm font-black text-black transition-transform hover:scale-[1.02]"
         >
           Voltar para a página inicial
         </Link>

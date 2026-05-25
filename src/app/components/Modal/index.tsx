@@ -14,10 +14,10 @@ const Modal = ({ children, closeModal }: ModalProps) => {
   useClickAway(contentRef, closeModal)
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 top-0 z-10 flex items-center justify-center backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-3 backdrop-blur-md">
       <div
         ref={contentRef}
-        className="w-[97%] rounded-lg bg-[#131313] p-6 shadow-2xl sm:w-[60%]"
+        className="cinema-panel w-full max-w-5xl rounded-lg p-4 sm:p-6"
       >
         {children}
       </div>

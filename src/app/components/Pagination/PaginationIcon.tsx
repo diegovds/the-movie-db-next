@@ -1,12 +1,21 @@
-'use client'
-
+import { cn } from '@/libs/utils'
 import { HTMLAttributes } from 'react'
 
 type PaginationIconProps = HTMLAttributes<HTMLDivElement>
 
-const PaginationIcon = ({ children }: PaginationIconProps) => {
+const PaginationIcon = ({
+  children,
+  className,
+  ...props
+}: PaginationIconProps) => {
   return (
-    <div className="flex h-full min-w-8 items-center justify-center rounded-md border border-solid border-black bg-[#131313] p-2 text-center text-gray-100 transition-opacity hover:opacity-75">
+    <div
+      className={cn(
+        'grid h-10 min-w-10 place-items-center rounded-full border border-white/10 bg-white/[0.06] px-3 text-sm font-black text-gray-100 transition-all hover:border-[var(--gold)] hover:bg-[var(--gold)] hover:text-black',
+        className,
+      )}
+      {...props}
+    >
       {children}
     </div>
   )

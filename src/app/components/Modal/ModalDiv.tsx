@@ -20,27 +20,27 @@ const ModalDiv = ({ movie, serie }: ModalDivProps) => {
   }
 
   return (
-    <div className="my-6">
+    <div className="my-7">
       <button
         onClick={() => setIsOpen(true)}
-        className="flex items-center gap-3 text-lg font-semibold transition-opacity hover:opacity-80"
+        className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white px-5 py-3 text-sm font-black text-black shadow-xl shadow-black/25 transition-transform hover:scale-[1.02]"
       >
-        <BsPlayFill size={40} /> Reproduzir trailer
+        <BsPlayFill size={28} /> Reproduzir trailer
       </button>
       {isOpen && (
         <Modal closeModal={handleIsOpen}>
-          <div className="mb-3 flex justify-between">
-            <h3 className="text-2xl font-bold text-gray-100 md:text-3xl">
+          <div className="mb-4 flex items-center justify-between gap-4">
+            <h3 className="text-2xl font-black text-gray-100 md:text-3xl">
               Trailer
             </h3>
-            <button onClick={() => handleIsOpen()}>
-              <IoClose className="rounded-full bg-gray-100 text-2xl text-black transition-opacity hover:opacity-85 md:text-3xl" />
+            <button onClick={() => handleIsOpen()} aria-label="Fechar trailer">
+              <IoClose className="rounded-full bg-white p-1 text-3xl text-black transition-transform hover:scale-105" />
             </button>
           </div>
           {movie && (
             <iframe
               width="100%"
-              className="aspect-video"
+              className="aspect-video rounded-md"
               src={`https://www.youtube.com/embed/${movie.videos.results[0].key}`}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             />
@@ -48,7 +48,7 @@ const ModalDiv = ({ movie, serie }: ModalDivProps) => {
           {serie && (
             <iframe
               width="100%"
-              className="aspect-video"
+              className="aspect-video rounded-md"
               src={`https://www.youtube.com/embed/${serie.videos.results[0].key}`}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             />

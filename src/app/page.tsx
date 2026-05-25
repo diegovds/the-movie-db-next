@@ -1,4 +1,6 @@
 import { Movie } from '@/types/Movies'
+import { fetchTmdb } from '@/utils/tmdb'
+import ApiState from './components/ApiState'
 import GridColumns from './components/GridColumns'
 import InfoCard from './components/InfoCard'
 import Pagination from './components/Pagination'
@@ -17,22 +19,25 @@ type Props = {
 const Home = async ({ searchParams }: Props) => {
   const { page } = await searchParams
 
-  const response = await fetch(
+  const data = await fetchTmdb<ResponseProps>(
     `https://api.themoviedb.org/3/trending/movie/week?${process.env.THE_MOVIE_DB}&include_adult=false&page=${page !== undefined && page > 0 ? page : 1}`,
-    {
-      cache: 'no-store',
-      next: {
-        revalidate: 0,
-      },
-    },
   )
-  const data: ResponseProps = await response.json()
+
+  if (!data) return <ApiState />
 
   return (
     <div className="w-full">
-      <TagH2 className="mb-4 mt-0 text-center md:text-left">
-        Filmes populares:
-      </TagH2>
+      <section className="mb-6 flex flex-col justify-between gap-3 border-b border-white/10 pb-5 md:flex-row md:items-end">
+        <div>
+          <TagH2 className="mt-0">Filmes</TagH2>
+          <h1 className="mt-2 text-4xl font-black leading-none text-white md:text-6xl">
+            Populares da semana
+          </h1>
+        </div>
+        <p className="max-w-md text-sm leading-6 text-[var(--muted)] md:text-right">
+          Cartazes em alta no TMDB, com nota, data e acesso rápido aos detalhes.
+        </p>
+      </section>
       <GridColumns page={true}>
         {data.results.map((movie) => (
           <InfoCard key={movie.id} movie={movie} />

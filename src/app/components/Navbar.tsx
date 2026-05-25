@@ -12,10 +12,16 @@ import { z } from 'zod'
 import logo from '../../assets/logo.png'
 
 const formSchema = z.object({
-  query: z.string(),
+  query: z.string().trim().min(1),
 })
 
 type FormData = z.infer<typeof formSchema>
+
+const navItems = [
+  { href: '/', label: 'Filmes' },
+  { href: '/tv', label: 'Séries' },
+  { href: '/person', label: 'Artistas' },
+]
 
 const Navbar = () => {
   const pathname = usePathname()
@@ -32,51 +38,84 @@ const Navbar = () => {
   }, [pathname, reset])
 
   const onSubmit = ({ query }: FormData) => {
-    router.push(`/search/movie/${query}`)
+    router.push(`/search/movie/${encodeURIComponent(query)}`)
   }
 
   return (
-    <nav className="bg-[#131313]">
-      <div className="container mx-auto flex flex-col justify-between px-3 py-1 md:flex-row md:gap-4 md:py-3">
-        <div className="flex justify-between">
-          <Link className="flex items-center" href={`/`}>
-            <Image src={logo} width={40} alt="Logo" />
-          </Link>
-          <div className="text-gray-300 md:hidden">
-            <Hamburger size={20} toggled={isOpen} toggle={setOpen} />
+    <nav className="sticky top-0 z-40 border-b border-white/10 bg-[#101113]/90 backdrop-blur-xl">
+      <div className="container mx-auto px-3 sm:px-4">
+        <div className="flex min-h-16 flex-col justify-center py-2 md:flex-row md:items-center md:justify-between md:gap-5 md:py-3">
+          <div className="flex items-center justify-between">
+            <Link
+              className="group flex items-center gap-3"
+              href="/"
+              aria-label="The Movie BD"
+            >
+              <span className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.06] shadow-lg shadow-black/30 transition-transform group-hover:scale-105">
+                <Image src={logo} width={28} alt="Logo The Movie BD" />
+              </span>
+              <span className="hidden leading-none sm:block">
+                <span className="block text-sm font-black uppercase tracking-[0.24em] text-white">
+                  Movie BD
+                </span>
+                <span className="text-xs text-[var(--muted)]">
+                  catálogo cinéfilo
+                </span>
+              </span>
+            </Link>
+            <div className="text-gray-200 md:hidden">
+              <Hamburger size={22} toggled={isOpen} toggle={setOpen} />
+            </div>
           </div>
-        </div>
-        <div
-          className={`flex flex-1 flex-col-reverse items-center justify-between gap-4 transition-all duration-300 ease-in-out md:flex-row md:items-start md:gap-0 ${isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0 md:opacity-100'}`}
-        >
-          <ul className={`flex flex-col items-center gap-3 md:flex-row`}>
-            <li
-              className={`${pathname === '/' ? 'bg-gray-300' : 'text-gray-300'} rounded-lg p-1 transition-opacity hover:opacity-85`}
+
+          <div
+            className={`flex flex-1 flex-col-reverse items-stretch gap-4 overflow-hidden transition-all duration-300 ease-out md:max-h-none md:flex-row md:items-center md:justify-between md:overflow-visible md:opacity-100 ${
+              isOpen ? 'max-h-52 pt-4 opacity-100' : 'max-h-0 opacity-0'
+            }`}
+          >
+            <ul className="flex flex-col gap-2 md:flex-row md:items-center">
+              {navItems.map((item) => {
+                const active =
+                  item.href === '/'
+                    ? pathname === '/'
+                    : pathname.startsWith(item.href)
+
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className={`block rounded-full px-4 py-2 text-sm font-bold transition-all ${
+                        active
+                          ? 'bg-[var(--gold)] text-black shadow-lg shadow-[#d9a441]/15'
+                          : 'text-gray-300 hover:bg-white/[0.07] hover:text-white'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+
+            <form
+              className="flex min-w-0 rounded-full border border-white/10 bg-white/[0.06] p-1 shadow-inner shadow-black/20 focus-within:border-[var(--gold)] md:w-[min(36vw,420px)]"
+              onSubmit={handleSubmit(onSubmit)}
             >
-              <Link href={`/`}>Filmes</Link>
-            </li>
-            <li
-              className={`${pathname === '/tv' ? 'bg-gray-300' : 'text-gray-300'} rounded-lg p-1 transition-opacity hover:opacity-85`}
-            >
-              <Link href={`/tv`}>Séries</Link>
-            </li>
-            <li
-              className={`${pathname === '/person' ? 'bg-gray-300' : 'text-gray-300'} rounded-lg p-1 transition-opacity hover:opacity-85`}
-            >
-              <Link href={`/person`}>Artistas</Link>
-            </li>
-          </ul>
-          <form className={`flex gap-2`} onSubmit={handleSubmit(onSubmit)}>
-            <input
-              type="text"
-              placeholder="Filme, série ou artista"
-              className="w-60 rounded-lg bg-gray-300 p-1 text-sm outline-none placeholder:text-gray-400"
-              {...register('query', { required: true })}
-            />
-            <button type="submit" className="w-8">
-              <IoMdSearch className="h-full w-full rounded-md bg-gray-300 px-1 transition-opacity hover:opacity-85" />
-            </button>
-          </form>
+              <input
+                type="text"
+                placeholder="Filme, série ou artista"
+                className="min-w-0 flex-1 bg-transparent px-4 text-sm text-white outline-none placeholder:text-gray-500"
+                {...register('query', { required: true })}
+              />
+              <button
+                type="submit"
+                className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-black transition-transform hover:scale-105"
+                aria-label="Pesquisar"
+              >
+                <IoMdSearch className="text-xl" />
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </nav>
